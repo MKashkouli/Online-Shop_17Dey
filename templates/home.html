@@ -6,7 +6,7 @@
         <h2> *** HOME PAGE ***</h2>
     {% if user.is_authenticated %}
         <p>hello {{ user.username }}</p>
-        <a class="text" href="{% url 'account_change_password' %}">Change pass</a>
+
     {% else %}
         hello guest
         <a class="text" href="{% url 'account_login' %}">ورود</a>

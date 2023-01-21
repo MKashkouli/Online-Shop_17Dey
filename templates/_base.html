@@ -14,10 +14,25 @@
 </head>
 <body>
 
+<nav class="navbar navbar-expand-lg navbar-dark bg-info" dir="rtl">
+    <div class="container mt-2">
+        {% if user.is_authenticated %}
+            <div class="mx-2 text-primary">خوش آمدی {{ user.username }}
+            |
+            <a class="link-primary text-decoration-none" href="{% url "account_change_password" %}">تغییر رمز عبور</a>
+            |
+            <a class="link-primary text-decoration-none" href="{% url "account_logout" %}">خروج</a>
 
-<div class="container mt-2">
-    {% block content %}
-    {% endblock %}
+        {% else %}
+            <a class="text-primary" href="{% url 'account_login' %}">ورود</a>
+            |
+            <a class="text-primary" href="{% url 'account_signup' %}">ثبت نام</a>
+        {% endif %}
+        </div>
+</nav>
+
+{% block content %}
+{% endblock %}
 </div>
 
 
