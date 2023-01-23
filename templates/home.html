@@ -1,15 +1,17 @@
 {% extends '_base.html' %}
 
-{% block title %} HOME {% endblock title %}
+{% block title %} HOME 33{% endblock title %}
 {% block content %}
 
-        <h2> *** HOME PAGE ***</h2>
+<div class =' text-center border rounded px-4 pt-4 pb-3 shadow'>
+    <h2> *** HOME PAGE ***</h2>
     {% if user.is_authenticated %}
         <p>hello {{ user.username }}</p>
-
     {% else %}
-        hello guest
-        <a class="text" href="{% url 'account_login' %}">ورود</a>
+        Hello guest please
+        <a class="text" href="{% url 'account_login' %}">Sign In</a>
 
     {% endif %}
+</div>
+
 {% endblock content %}
