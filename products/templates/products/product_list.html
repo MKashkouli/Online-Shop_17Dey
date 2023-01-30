@@ -3,9 +3,12 @@
 {% block title %} Products {% endblock title %}
 {% block content %}
 <div class="m-3">
-        <h2>Product List</h2>
+        <h1 class="text-center">*** Product List ***</h1>
     {% for product in products %}
-   <h5>>>> {{ product.title }}</h5>
+        <a href="{{product.get_absolute_url}}">
+            <h4>>>> {{ product.title }}</h4>
+        </a>
+        <p style="color:crimson;font-weight: bold"> >>>>>>{{ product.description }}</p>
     {% endfor %}
 
     </div>
