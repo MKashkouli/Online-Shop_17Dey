@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product
+from .models import Product, Comment
 
 
 @admin.register(Product)
@@ -9,3 +9,8 @@ class ProductAdmin(admin.ModelAdmin):
     list_editable = ['active']
     search_fields = ['title']
     sortable_by= ['price']
+
+
+@admin.register(Comment)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ("author", "product", "body","recommend", "active", "datetime_created")
