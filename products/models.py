@@ -21,22 +21,24 @@ class Product(models.Model):
 
 class ActiveCommentManager(models.Manager):
     def get_queryset(self):
-        return super(ActiveCommentManager,self).get_queryset().filter(active=True)
+        return super(ActiveCommentManager, self).get_queryset().filter(active=True)
+
 
 class Comment(models.Model):
     STAR_CHOICES = [
-        ("1","Very Bad"),
+        ("1", "Very Bad"),
         ("2", "Bad"),
         ("3", "Normal"),
         ("4", "Good"),
         ("5", "Perfect"),
     ]
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='comments')
-    author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='comments',verbose_name="Comment Author")
-    body = models.TextField(verbose_name= "Comment Text")
-    stars=models.CharField(choices=STAR_CHOICES, max_length=10, verbose_name="What Is Your Score?")
-    active= models.BooleanField(default=True)
-    recommend = models.BooleanField(default=True ,verbose_name="Do you Recommend")
+    author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='comments',
+                               verbose_name="Comment Author")
+    body = models.TextField(verbose_name="Comment Text")
+    stars = models.CharField(choices=STAR_CHOICES, max_length=10, verbose_name="What Is Your Score?")
+    active = models.BooleanField(default=True)
+    recommend = models.BooleanField(default=True, verbose_name="Do you Recommend")
 
     datetime_created = models.DateTimeField(auto_now_add=True)
     datetime_modified = models.DateTimeField(auto_now=True)
