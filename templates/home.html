@@ -3,15 +3,22 @@
 {% block title %} HOME 33{% endblock title %}
 {% block content %}
 
-<div class ='text-center border rounded px-4 pt-4 pb-3 shadow'>
+    <div class='text-center border rounded px-4 pt-4 pb-3 shadow'>
     <h2> *** HOME PAGE ***</h2>
     {% if user.is_authenticated %}
-        <p>hello {{ user.username }}</p>
-    {% else %}
-        Hello guest please
-        <a class="text" href="{% url 'account_login' %}">Sign In</a>
+        <div class="mx-2">Welcome {{ user.username }}
+        |
+        <a class="link-primary  " href="{% url "account_change_password" %}">Change Password</a>
+        |
+        <a class="link-primary " href="{% url "account_logout" %}">Log Out</a>
 
+    {% else %}
+        <a class="text-primary " href="{% url 'account_login' %}">Log In | </a>
+        |
+        <a class="text-primary " href="{% url 'account_signup' %}"> Sign Up</a>
     {% endif %}
+
+
 </div>
 
 {% endblock content %}

@@ -18,7 +18,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="d-flex justify-content-between align-items-center flex-sm-row flex-column">
-                            <h1 class="page-title">جزئیات محصول «{{ product.title }}»</h1>
+                            <h1 class="page-title">{% trans "Product Details" %} «{{ product.title }}»</h1>
                         </div>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                                     </div>
                                     <button type="button" class="btn btn-small btn-bg-red btn-color-white btn-hover-2"
                                             onclick="window.location.href='cart.html'">
-                                        اضافه به سبد خرید
+                                        {% trans "Add To Cart" %}
                                     </button>
                                 </div>
                                 <div class="product-footer-meta mt-5 pt-5">
@@ -80,11 +80,11 @@
                                     </a>
                                     <a class="m-0 product-data-tab__link nav-link" id="nav-info-tab" data-toggle="tab"
                                        href="#nav-info" role="tab" aria-selected="true">
-                                        <span>ویژگی ها</span>
+                                        <span>{% trans "Features" %}</span>
                                     </a>
                                     <a class="m-0 product-data-tab__link nav-link" id="nav-reviews-tab"
                                        data-toggle="tab" href="#nav-reviews" role="tab" aria-selected="true">
-                                        <span>نظرات ({{ product.comments.all|only_active_comments|length }})</span>
+                                        <span>{% trans "Comments" %} ({{ product.comments.all|only_active_comments|length }})</span>
                                     </a>
                                 </div>
                                 <div class="tab-content product-data-tab__content" id="product-tabContent">
@@ -126,7 +126,7 @@
                                          aria-labelledby="nav-reviews-tab">
                                         <div class="product-reviews">
                                             <h3 class="review__title">{{ product.comments.all|only_active_comments|length }}
-                                                نظر برای
+                                                {% trans "Comments For" %}
                                                 {{ product.title }}</h3>
                                             <ul class="review__list">
                                                 {% for comment in product.comments.all|only_active_comments %}
