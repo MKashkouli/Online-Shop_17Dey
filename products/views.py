@@ -3,6 +3,8 @@ from django.shortcuts import get_object_or_404
 from .forms import CommentForm
 from .models import Product, Comment
 from cart.forms import AddToCartForm
+from django.contrib import messages
+from django.utils.translation import gettext as _
 
 
 class ProductListView(generic.ListView):
@@ -33,7 +35,5 @@ class CommentCreateView(generic.CreateView):
         product_id = int(self.kwargs['product_id'])
         product = get_object_or_404(Product, id=product_id)
         obj.product = product
+        messages.success(self.request, _("Your Comment added Successfully"))
         return super().form_valid(form)
-
-
-
