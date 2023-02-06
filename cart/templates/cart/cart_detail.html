@@ -33,6 +33,8 @@
                             <div class="row no-gutters">
                                 <div class="col-12">
                                     <div class="table-content table-responsive">
+                                        {% if cart %}
+
                                         <table class="table text-center">
                                             <thead>
                                             <tr>
@@ -44,6 +46,7 @@
                                                 <th>مجموع</th>
                                             </tr>
                                             </thead>
+
                                             <tbody>
                                             {% for item in cart %}
                                                 <tr>
@@ -78,13 +81,17 @@
                                                     </td>
                                                     <td class="product-total-price">
                                                             <span class="product-price-wrapper">
-                                                                <span class="money">{{ item.product_obj.price }} </span>
+                                                                <span class="money">{{ item.total_price}} </span>
                                                             </span>
                                                     </td>
                                                 </tr>
                                             {% endfor %}
                                             </tbody>
                                         </table>
+                                            {% else %}
+                                            <h3> {% trans " CART IS EMPTY !" %}</h3>
+                                            <a href="{% url "products" %}"> {% trans "GO SHOPING" %}</a>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
@@ -104,7 +111,7 @@
                                             <span>مجموع</span>
                                         </div>
                                         <div class="cart-calculator__item--value">
-                                            <span>۳۴۶,۰۰۰ تومان</span>
+                                            <span>{{ cart.get_total_price }} تومان</span>
                                         </div>
                                     </div>
                                     <div class="cart-calculator__item order-total">
@@ -113,7 +120,7 @@
                                         </div>
                                         <div class="cart-calculator__item--value">
                                                 <span class="product-price-wrapper">
-                                                    <span class="money">۳۴۶,۰۰۰ تومان</span>
+                                                    <span class="money">{{ cart.get_total_price }} تومان</span>
                                                 </span>
                                         </div>
                                     </div>
