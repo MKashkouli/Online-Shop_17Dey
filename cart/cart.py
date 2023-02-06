@@ -14,7 +14,7 @@ class Cart:
         if not cart:
             cart = self.session['cart'] = {}
 
-            self.cart = cart
+        self.cart = cart
 
     def add(self, product, quantity=1):
         """
@@ -37,7 +37,7 @@ class Cart:
 
         if product_id in self.cart :
             del self.cart[product_id]
-            self.save()
+        self.save()
 
     def save(self):
         """
@@ -54,8 +54,8 @@ class Cart:
         for product in products:
             cart[str(product.id)]['product_obj'] = product
 
-            for item in cart.values():
-                yield item
+        for item in cart.values():
+            yield item
 
     def __len__(self):
         return len(self.cart.keys())
