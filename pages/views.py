@@ -13,3 +13,6 @@ class AboutUsView(TemplateView):
 class ContactUsView(TemplateView):
     template_name = "contactus.html"
 
+
+class ProfileView(TemplateView):
+    template_name = "profile.html"

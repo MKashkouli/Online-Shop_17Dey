@@ -35,7 +35,7 @@
                 </ul>
              <div class="mini-cart__total">
                     <span>{% trans "Total Items" %}</span>
-                    <span class="ammount"> {{ cart.get_total_items }} </span>
+                    <span class="ammount"> {{ cart|length }} </span>
                 </div>
 
                 <div class="mini-cart__total">

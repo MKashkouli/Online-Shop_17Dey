@@ -1,0 +1,48 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-07 18:59+0330\n"
+"PO-Revision-Date: 2023-02-07 19:00+0330\n"
+"Last-Translator: محمد کشکولی <m_kashkouli@yahoo.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Translated-Using: django-rosetta 0.9.8\n"
+
+#: .\templates\profile.html:5 .\templates\profile.html:9
+msgid "PROFILE"
+msgstr "حساب کاربری"
+
+#: .\templates\profile.html:12
+msgid "Welcome"
+msgstr "خوش آمدید"
+
+#: .\templates\profile.html:13
+msgid "EMAIL ADDRESS"
+msgstr "آدرس ایمیل"
+
+#: .\templates\profile.html:14
+msgid "User Name"
+msgstr "نام کاربری"
+
+#: .\templates\profile.html:17
+msgid "Logout"
+msgstr "خروج"
+
+#: .\templates\profile.html:18
+msgid "Change Password"
+msgstr "تغییر رمز عبور"
+
+#: .\templates\profile.html:19
+msgid "Complete Info"
+msgstr "تکمیل اطلاعات"

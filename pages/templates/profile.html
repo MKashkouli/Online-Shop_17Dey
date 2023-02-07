@@ -1,0 +1,23 @@
+{% extends '_base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %} {% trans "PROFILE" %} {% endblock title %}
+{% block content %}
+    <div class='text-center border rounded px-4 pt-4 pb-3 shadow'>
+
+        <h2>*** {% trans "PROFILE" %} ***</h2>
+        <br>
+        <div class="mx-2">
+            <h3>{{ user.first_name }} {{ user.last_name }} {% trans "Welcome" %}</h3>  <br>
+            <h4>{% trans "EMAIL ADDRESS" %} : {{ user.email }}</h4><br>
+            <h4>{% trans "User Name" %} : {{ user.username }}</h4><br>
+
+            <div class="btn-group" role="group" aria-label="..."></div>
+                <button type="button" class="btn btn-secondary"><a href="{% url 'set' %}">{% trans "Complete Info" %}</a></button>
+                <button type="button" class="btn btn-secondary"><a href="{% url 'account_reset_password' %}">{% trans "Change Password" %}</a></button>
+                <button type="button" class="btn btn-secondary"><a href="{% url 'account_logout' %}">{% trans "Logout" %}</a></button>
+    </div>
+
+
+{% endblock content %}
