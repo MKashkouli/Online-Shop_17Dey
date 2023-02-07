@@ -40,3 +40,11 @@ def remove_from_cart(request, product_id):
     cart.remove(product)
 
     return redirect('cart:cart_detail')
+
+
+def clear_cart(request):
+    cart = Cart(request)
+
+    cart.clear()
+
+    return redirect('cart:cart_detail')

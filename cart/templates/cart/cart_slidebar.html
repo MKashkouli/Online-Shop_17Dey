@@ -19,7 +19,7 @@
                             <div class="mini-cart__product__content pt-2">
                                     <span class="mini-cart__product__title d-flex flex-row justify-content-between">
                                         <a href="#"> {{ item.product_obj.title }} </a>
-                                        <a href="#" class="">
+                                        <a href="{% url "cart:cart_remove" item.product_obj.id %}" class="">
                                             &#10060;
                                         </a>
                                     </span>
@@ -33,6 +33,11 @@
                     {% endfor %}
 
                 </ul>
+             <div class="mini-cart__total">
+                    <span>{% trans "Total Items" %}</span>
+                    <span class="ammount"> {{ cart.get_total_items }} </span>
+                </div>
+
                 <div class="mini-cart__total">
                     <span>{% trans "Total Price" %}</span>
                     <span class="ammount"> {{ cart.get_total_price }} {% trans "$" %}</span>

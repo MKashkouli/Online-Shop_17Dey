@@ -87,11 +87,17 @@
                                 </div>
                             </div>
                         </div>
+                        {% if cart %}
                         <div class="row no-gutters border-top pt--20 mt--20">
                             <div class="col-sm-6 text-sm-right">
-                                <button type="submit" class="cart-form__btn">خالی کردن سبد خرید</button>
+                                <a href="{% url "cart:cart_clear" %}">
+                                <button type="submit" class="btn btn-small btn-bg-red btn-color-white btn-hover-2">
+                                    {% translate "Empty Cart" %}
+                                </button>
+                                </a>
                             </div>
                         </div>
+                    {% endif %}
                     </div>
                     <div class="col-lg-4">
                         <div class="cart-collaterals">

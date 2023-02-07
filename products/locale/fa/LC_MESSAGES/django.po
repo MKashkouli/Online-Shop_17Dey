@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-06 18:01+0330\n"
-"PO-Revision-Date: 2023-02-06 17:58+0330\n"
+"POT-Creation-Date: 2023-02-07 15:30+0330\n"
+"PO-Revision-Date: 2023-02-07 15:04+0330\n"
 "Last-Translator: Mohammad Kashkouli <m_kashkouli@yahoo.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -55,61 +55,52 @@ msgstr "امتیاز شما به این محصول ؟"
 msgid "Do you Recommend"
 msgstr "آیا به دیگران پیشنهاد میدهید ؟"
 
-#: .\templates\products\product_detail.html:21
-msgid "Product Details"
-msgstr "جزئیات محصول"
-
-#: .\templates\products\product_detail.html:61
+#: .\templates\products\product_detail.html:50
 msgid "Add To Cart"
 msgstr "اضافه به سبد خرید"
 
-#: .\templates\products\product_detail.html:83
+#: .\templates\products\product_detail.html:72
 msgid "Product Description"
 msgstr "توضیجات محصول"
 
-#: .\templates\products\product_detail.html:87
+#: .\templates\products\product_detail.html:76
 msgid "Features"
 msgstr "ویژگی ها"
 
-#: .\templates\products\product_detail.html:91
+#: .\templates\products\product_detail.html:80
 msgid "Comments"
 msgstr "نظرات"
 
-#: .\templates\products\product_detail.html:133
+#: .\templates\products\product_detail.html:122
 msgid "Comments For"
 msgstr "نظر برای"
 
-#: .\templates\products\product_detail.html:172
+#: .\templates\products\product_detail.html:161
 msgid "Write Your Comment"
 msgstr "نظر خود را بنویسید"
 
-#: .\templates\products\product_detail.html:196
+#: .\templates\products\product_detail.html:185
 msgid "Please Login to post your Comment"
 msgstr "لطفا جهت ثبت نظر وارد سایت شوید"
-
-#: .\templates\products\product_detail.html:239
-msgid "Cart"
-msgstr "سبد خرید"
-
-#: .\templates\products\product_detail.html:257
-#: .\templates\products\product_detail.html:266
-msgid "$"
-msgstr "تومان"
-
-#: .\templates\products\product_detail.html:265
-msgid "Total Price"
-msgstr "جمع کل"
-
-#: .\templates\products\product_detail.html:269
-msgid "View Cart"
-msgstr "مشاهده سبد خرید"
-
-#: .\templates\products\product_detail.html:270
-#, fuzzy
-#| msgid "ChekOut"
-msgid "CheckOut"
-msgstr "پرداخت"
 
 #: .\views.py:38
 msgid "Your Comment added Successfully"
 msgstr "نظر شما با موفقیت ثبت شد ."
+
+msgid "Product Details"
+msgstr "جزئیات محصول"
+
+msgid "Cart"
+msgstr "سبد خرید"
+
+msgid "$"
+msgstr "تومان"
+
+msgid "Total Price"
+msgstr "جمع کل"
+
+msgid "View Cart"
+msgstr "مشاهده سبد خرید"
+
+msgid "CheckOut"
+msgstr "پرداخت"
