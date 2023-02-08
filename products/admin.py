@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Product, Comment
+from jalali_date.admin import ModelAdminJalaliMixin
 
 
 class CommentsInline(admin.TabularInline):  # Or class CommentsInline(admin.StackedInline):
@@ -9,7 +10,7 @@ class CommentsInline(admin.TabularInline):  # Or class CommentsInline(admin.Stac
 
 
 @admin.register(Product)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ModelAdminJalaliMixin ,admin.ModelAdmin):
     list_display = ("title", "price", "active")
     list_filter = ['active']
     list_editable = ['active']

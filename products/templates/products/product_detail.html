@@ -1,6 +1,7 @@
 {% extends '_base.html' %}
 {% load static %}
 {% load i18n %}
+{% load jalali_tags %}
 
 {% load crispy_forms_tags %}
 {% load comment_tags %}
@@ -29,6 +30,9 @@
                         <div class="col-12 col-sm-8 product-main-details mt-md--50">
                             <div class="product-summary pl-lg--30 pl-md--0 text-right p-4">
                                 <h3 class="product-title mb--20">{{ product.title }}</h3>
+                                <p class="product-short-description mb--20">
+                                    {{ product.datetime_created|to_jalali:'%Y/%m/%d _ %H:%M:%S' }}
+                                </p>
                                 <p class="product-short-description mb--20">
                                     {{ product.description }}
                                 </p>
@@ -134,7 +138,9 @@
                                                                     <div>
                                                                         <div class="review__meta">
                                                                             <strong class="review__author px-4">{{ comment.author }}</strong><br>
-                                                                            <span class="review__published-date mr-4">{{ comment.datetime_created }}</span>
+                                                                            <span class="review__published-date mr-4">
+                                                                                {{ comment.datetime_created|to_jalali:'%Y/%m/%d ساعت  %H:%M:%S' }}
+                                                                            </span>
 
                                                                         </div>
                                                                         <div class="product-rating">

@@ -45,17 +45,19 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    #local apps
+    # Third party apps
+    'jalali_date',
+    'allauth',
+    'allauth.account',
+    'crispy_forms',
+    'rosetta',
+
+    # local apps
     'accounts',
     'pages',
     "products",
     'cart',
 
-    # Third party apps
-    'allauth',
-    'allauth.account',
-    'crispy_forms',
-    'rosetta',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
