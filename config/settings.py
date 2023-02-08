@@ -37,13 +37,15 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
-    #'jazzmin',
+
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
 
     # Third party apps
     'jalali_date',
@@ -51,12 +53,14 @@ INSTALLED_APPS = [
     'allauth.account',
     'crispy_forms',
     'rosetta',
+    #'jazzmin',
 
     # local apps
     'accounts',
     'pages',
     "products",
     'cart',
+    'persian_translate'
 
 ]
 MIDDLEWARE = [

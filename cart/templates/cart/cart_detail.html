@@ -1,6 +1,8 @@
 {% extends '_base.html' %}
 {% load static %}
 {% load i18n %}
+{% load persian_translate_tags %}
+{% load humanize %}
 
 {% load crispy_forms_tags %}
 {% load comment_tags %}
@@ -53,7 +55,7 @@
                                                     </td>
                                                     <td class="product-price">
                                                             <span class="product-price-wrapper">
-                                                                <span class="money">{{ item.product_obj.price }} </span>
+                                                                <span class="money">{{ item.product_obj.price|intcomma:False|translate_number }} </span>
                                                             </span>
                                                     </td>
                                                     <td class="product-quantity">
@@ -74,7 +76,7 @@
                                                     </td>
                                                     <td class="product-total-price">
                                                             <span class="product-price-wrapper">
-                                                                <span class="money">{{ item.total_price }} </span>
+                                                                <span class="money">{{ item.total_price|intcomma:False|translate_number }} </span>
                                                             </span>
                                                     </td>
                                                 </tr>
@@ -111,7 +113,7 @@
                                             <span>مجموع</span>
                                         </div>
                                         <div class="cart-calculator__item--value">
-                                            <span>{{ cart.get_total_price }} تومان</span>
+                                            <span>{{ cart.get_total_price|intcomma:False|translate_number }} تومان</span>
                                         </div>
                                     </div>
                                     <div class="cart-calculator__item order-total">
@@ -120,7 +122,7 @@
                                         </div>
                                         <div class="cart-calculator__item--value">
                                                 <span class="product-price-wrapper">
-                                                    <span class="money">{{ cart.get_total_price }} تومان</span>
+                                                    <span class="money">{{ cart.get_total_price|intcomma:False|translate_number }} تومان</span>
                                                 </span>
                                         </div>
                                     </div>
@@ -136,6 +138,4 @@
         </div>
     </div>
     <!-- Main Content Wrapper Start -->
-
-
 {% endblock content %}
