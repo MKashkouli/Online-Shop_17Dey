@@ -35,8 +35,11 @@
                                                 <div class="product-inner">
                                                     <figure class="product-image ">
                                                         <a href="{{ product.get_absolute_url }}">
-                                                            <img src="{% static "img/products/12.jpg" %}"
-                                                                 alt="Products">
+                                                            {% if product.image %}
+                                                            <img style="height: 300px; width: 250px"  src="{{ product.image.url }}" alt="Products">
+                                                                {% else %}
+                                                                <img style="height: 300px; width: 250px"  src="{% static "img/products/prod-1.jpg" %}" alt="Products">
+                                                            {% endif %}
                                                         </a>
                                                         <div class="ShoppingYar-product-action">
                                                             <div class="product-action d-flex">

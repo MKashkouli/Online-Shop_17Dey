@@ -3,5 +3,5 @@ from . import views
 
 urlpatterns = [
 
-    path('set/', views.UserSet.as_view(), name = 'set'),
+    path('update/', views.UserUpdate.as_view(), name = 'update'),
 ]

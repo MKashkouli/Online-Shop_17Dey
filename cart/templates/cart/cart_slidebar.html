@@ -13,7 +13,9 @@
                         <li class="mini-cart__product d-flex justify-content-between">
                             <div class="mini-cart__product__image">
                                 <a href="#">
-                                    <img src="{% static "img/products/prod-1-100x100.jpg" %}">
+                                    {% if item.product_obj.image %}
+                                        <img src="{{ item.product_obj.image.url }}" alt="Products">
+                                    {% endif %}
                                 </a>
                             </div>
                             <div class="mini-cart__product__content pt-2">
@@ -44,7 +46,10 @@
                 </div>
                 <div class="mini-cart__buttons">
                     <a href="{% url "cart:cart_detail" %}"
-                       class="btn btn-fullwidth btn-bg-sand mb--20">{% trans "View Cart" %}</a>
+                       class="btn btn-fullwidth btn-bg-sand">{% trans "View Cart" %}</a>
+                    {% if cart %}
+                        <a href="{% url "cart:cart_clear" %}" class="btn btn-fullwidth btn-bg-sand">{% translate "Empty Cart" %} </a>
+                    {% endif %}
                     <a href="checkout.html" class="btn btn-fullwidth btn-bg-sand">{% trans "CheckOut" %} </a>
                 </div>
             </div>

@@ -14,10 +14,16 @@
             <h4>{% trans "User Name" %} : {{ user.username }}</h4><br>
 
             <div class="btn-group" role="group" aria-label="..."></div>
-                <button type="button" class="btn btn-secondary"><a href="{% url 'set' %}">{% trans "Complete Info" %}</a></button>
-                <button type="button" class="btn btn-secondary"><a href="{% url 'account_reset_password' %}">{% trans "Change Password" %}</a></button>
-                <button type="button" class="btn btn-secondary"><a href="{% url 'account_logout' %}">{% trans "Logout" %}</a></button>
-    </div>
+                <button type="button" class="btn btn-secondary">
+                    <a href="{% url 'update' %}">{% trans "Complete Info" %}</a>
+                </button>
+                <button type="button" class="btn btn-secondary">
+                    <a href="{% url 'account_reset_password' %}">{% trans "Change Password" %}</a>
+                </button>
+                <button type="button" class="btn btn-secondary">
+                    <a href="{% url 'account_logout' %}">{% trans "Logout" %}</a>
+                </button>
+            </div>
 
-
+</div>
 {% endblock content %}

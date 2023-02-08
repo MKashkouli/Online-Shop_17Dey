@@ -42,8 +42,9 @@
                                                             href="{% url "cart:cart_remove" item.product_obj.id %}">
                                                         <i class="flaticon flaticon-cross"></i></a></td>
                                                     <td class="product-thumbnail text-left">
-                                                        <img src="{% static "img/products/prod-10-70x88.jpg" %}"
-                                                             alt="Product Thumnail">
+                                                        {% if item.product_obj.image %}
+                                                            <img src="{{ item.product_obj.image.url }}" alt="Products">
+                                                        {% endif %}
                                                     </td>
                                                     <td class="product-name ">
                                                         <h3>
@@ -88,16 +89,17 @@
                             </div>
                         </div>
                         {% if cart %}
-                        <div class="row no-gutters border-top pt--20 mt--20">
-                            <div class="col-sm-6 text-sm-right">
-                                <a href="{% url "cart:cart_clear" %}">
-                                <button type="submit" class="btn btn-small btn-bg-red btn-color-white btn-hover-2">
-                                    {% translate "Empty Cart" %}
-                                </button>
-                                </a>
+                            <div class="row no-gutters border-top pt--20 mt--20">
+                                <div class="col-sm-6 text-sm-right">
+                                    <a href="{% url "cart:cart_clear" %}">
+                                        <button type="submit"
+                                                class="btn btn-small btn-bg-red btn-color-white btn-hover-2">
+                                            {% translate "Empty Cart" %}
+                                        </button>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                    {% endif %}
+                        {% endif %}
                     </div>
                     <div class="col-lg-4">
                         <div class="cart-collaterals">
