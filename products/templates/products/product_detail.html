@@ -37,7 +37,7 @@
                                     {{ product.datetime_created|to_jalali:'%Y/%m/%d _ %H:%M:%S'|translate_number }}
                                 </p>
                                 <p class="product-short-description mb--20">
-                                    {{ product.description|safe|truncatewords:10 }}
+                                    {{ product.short_description|safe|truncatewords:200 }}
                                 </p>
                                 <div class="my-5 py-5 product-price-wrapper mb--25">
                                     <span class="money text-success">{{ product.price|intcomma:False|translate_number }} تومان</span>
