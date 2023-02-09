@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'crispy_forms',
     'rosetta',
+    'ckeditor',
     #'jazzmin',
 
     # local apps
@@ -156,6 +157,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # media files config
 MEDIA_URL = '/media/'

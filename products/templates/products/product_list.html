@@ -71,8 +71,7 @@
 
                                                     <form action="{% url "cart:cart_add" product.id %}" method="POST">
                                                         {% csrf_token %}
-                                                        <button type="submit"
-                                                                class="btn btn-fullwidth btn-bg-sand">
+                                                        <button type="submit" class="btn btn-fullwidth btn-bg-sand">
                                                             {% trans "Add To Cart" %}
                                                         </button>
                                                     </form>
