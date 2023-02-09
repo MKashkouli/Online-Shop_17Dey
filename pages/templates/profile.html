@@ -13,17 +13,14 @@
             <h4>{% trans "EMAIL ADDRESS" %} : {{ user.email }}</h4><br>
             <h4>{% trans "User Name" %} : {{ user.username }}</h4><br>
 
-            <div class="btn-group" role="group" aria-label="..."></div>
-                <button type="button" class="btn btn-secondary">
-                    <a href="{% url 'update' %}">{% trans "Complete Info" %}</a>
-                </button>
-                <button type="button" class="btn btn-secondary">
-                    <a href="{% url 'account_reset_password' %}">{% trans "Change Password" %}</a>
-                </button>
-                <button type="button" class="btn btn-secondary">
-                    <a href="{% url 'account_logout' %}">{% trans "Logout" %}</a>
-                </button>
+            <div class="btn-group" role="group" aria-label="...">
+
+                    <a href="{% url 'profile_update' %}" class="btn btn-fullwidth btn-bg-sand">{% trans "Complete Info" %}</a>
+                    <a href="{% url 'account_reset_password' %}" class="btn btn-fullwidth btn-bg-sand">{% trans "Change Password" %}</a>
+                    <a href="{% url 'account_logout' %}" class="btn btn-fullwidth btn-bg-sand">{% trans "Logout" %}</a>
+                </div>
             </div>
 
 </div>
+
 {% endblock content %}
