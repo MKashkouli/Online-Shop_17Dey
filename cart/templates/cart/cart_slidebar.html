@@ -52,7 +52,7 @@
                     {% if cart %}
                         <a href="{% url "cart:cart_clear" %}" class="btn btn-fullwidth btn-bg-sand">{% translate "Empty Cart" %} </a>
                     {% endif %}
-                    <a href="checkout.html" class="btn btn-fullwidth btn-bg-sand">{% trans "CheckOut" %} </a>
+                    <a href="{% url "order_create" %}" class="btn btn-fullwidth btn-bg-sand">{% trans "CheckOut" %} </a>
                 </div>
             </div>
         </div>
