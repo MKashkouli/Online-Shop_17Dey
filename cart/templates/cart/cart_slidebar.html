@@ -37,7 +37,7 @@
                     {% endfor %}
 
                 </ul>
-             <div class="mini-cart__total">
+                <div class="mini-cart__total">
                     <span>{% trans "Total Items" %}</span>
                     <span class="ammount"> {{ cart|length|translate_number }} </span>
                 </div>
@@ -50,9 +50,13 @@
                     <a href="{% url "cart:cart_detail" %}"
                        class="btn btn-fullwidth btn-bg-sand">{% trans "View Cart" %}</a>
                     {% if cart %}
-                        <a href="{% url "cart:cart_clear" %}" class="btn btn-fullwidth btn-bg-sand">{% translate "Empty Cart" %} </a>
+                        <a href="{% url "cart:cart_clear" %}"
+                           class="btn btn-fullwidth btn-bg-sand">{% translate "Empty Cart" %} </a>
                     {% endif %}
-                    <a href="{% url "order_create" %}" class="btn btn-fullwidth btn-bg-sand">{% trans "CheckOut" %} </a>
+                    {% if cart %}
+                        <a href="{% url "order_create" %}"
+                           class="btn btn-fullwidth btn-bg-sand">{% trans "CheckOut" %} </a>
+                    {% endif %}
                 </div>
             </div>
         </div>

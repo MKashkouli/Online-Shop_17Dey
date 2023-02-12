@@ -4,6 +4,8 @@ from .cart import Cart
 from .forms import AddToCartForm
 from products.models import Product
 from django.views.decorators.http import require_POST
+from django.contrib import messages
+from django.utils.translation import gettext as _
 
 
 def cart_detail_view(request):
@@ -46,5 +48,6 @@ def clear_cart(request):
     cart = Cart(request)
 
     cart.clear()
+    messages.success(request, _("Your Cart is Empty"))
 
     return redirect('cart:cart_detail')
