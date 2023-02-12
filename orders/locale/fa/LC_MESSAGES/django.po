@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-12 20:53+0330\n"
-"PO-Revision-Date: 2023-02-12 20:54+0330\n"
+"POT-Creation-Date: 2023-02-12 21:46+0330\n"
+"PO-Revision-Date: 2023-02-12 21:48+0330\n"
 "Last-Translator: محمد کشکولی <m_kashkouli@yahoo.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,6 +19,57 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Translated-Using: django-rosetta 0.9.8\n"
 
-#: .\templates\orders\order_create.html:12
+#: .\models.py:8
+msgid "user"
+msgstr "کاربر"
+
+#: .\models.py:11
+msgid "first name"
+msgstr "نام"
+
+#: .\models.py:12
+msgid "last name"
+msgstr "نام خانوادگی"
+
+#: .\models.py:13
+msgid "Phone Number"
+msgstr "شماره تلفن"
+
+#: .\models.py:14
+msgid "Address"
+msgstr "آدرس"
+
+#: .\models.py:15
+#| msgid "Order"
+msgid "Order Note"
+msgstr "یادداشت سقارش"
+
+#: .\templates\orders\order_create.html:13
 msgid "Order"
 msgstr "ثبت سقارش"
+
+#: .\templates\orders\order_create.html:90
+msgid "Product"
+msgstr "نام محصول"
+
+#: .\templates\orders\order_create.html:91
+msgid "quantity"
+msgstr "تعداد"
+
+#: .\templates\orders\order_create.html:92
+msgid "price"
+msgstr "فی"
+
+#: .\templates\orders\order_create.html:93
+msgid "total price"
+msgstr "مجموع"
+
+#: .\templates\orders\order_create.html:109
+#: .\templates\orders\order_create.html:112
+#: .\templates\orders\order_create.html:124
+msgid "$"
+msgstr "تومان"
+
+#: .\templates\orders\order_create.html:123
+msgid "total"
+msgstr "قیمت کل"
