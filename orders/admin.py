@@ -6,7 +6,7 @@ from jalali_date.admin import ModelAdminJalaliMixin
 class OrderInline(admin.TabularInline):  # Or class CommentsInline(admin.StackedInline):
     model = OrderItem
     fields = ("order", "product", "quantity", "price",)
-    extra = 1
+    extra = 2
 
 @admin.register(Order)
 class OrderAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):

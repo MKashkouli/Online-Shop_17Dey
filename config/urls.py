@@ -26,6 +26,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('products/', include('products.urls')),
     path('cart/', include('cart.urls')),
+    path('order/', include('orders.urls')),
     #Rosetta :
     path('rosetta/', include('rosetta.urls')),
    # path('accounts/', include('django.contrib.auth.urls')),
