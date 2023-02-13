@@ -10,7 +10,6 @@ from cart.cart import Cart
 
 @login_required
 def order_page_view(request):
-    cart = Cart(request)
     order_form = OrderForm()
     cart = Cart(request)
 

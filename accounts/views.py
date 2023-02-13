@@ -13,7 +13,6 @@ from django.shortcuts import render, redirect
 #     template_name = "account/profile_update.html.html"
 #     success_url = reverse_lazy('profile')
 
-
 def profile_update(request):
     if request.method == 'POST':
         form = CustomUserChangeForm(request.POST, instance=request.user)

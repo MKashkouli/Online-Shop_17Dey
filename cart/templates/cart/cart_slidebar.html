@@ -4,13 +4,13 @@
 {% load humanize %}
 
 <!-- Mini Cart Start -->
-<aside class="mini-cart" id="miniCart">
+<aside style="overflow: auto ;" class="mini-cart" id="miniCart">
     <div class="mini-cart-wrapper">
         <a href="" class="btn-close"><i class="flaticon flaticon-cross"></i></a>
         <div class="mini-cart-inner">
             <h3 class="mini-cart__heading mb--40 mb-lg--30 text-right"> {% trans "Cart" %}</h3>
             <div class="mini-cart__content">
-                <ul class="mini-cart__list text-right">
+                <ul class=" text-right">
                     {% for item in cart %}
                         <li class="mini-cart__product d-flex justify-content-between">
                             <div class="mini-cart__product__image">
@@ -49,14 +49,10 @@
                 <div class="mini-cart__buttons">
                     <a href="{% url "cart:cart_detail" %}"
                        class="btn btn-fullwidth btn-bg-sand">{% trans "View Cart" %}</a>
-                    {% if cart %}
-                        <a href="{% url "cart:cart_clear" %}"
-                           class="btn btn-fullwidth btn-bg-sand">{% translate "Empty Cart" %} </a>
-                    {% endif %}
-                    {% if cart %}
-                        <a href="{% url "order_create" %}"
+                    <a href="{% url "cart:cart_clear" %}"
+                           class="btn btn-fullwidth btn-bg-sand">{% translate "Empty Cart" %}</a>
+                    <a href="{% url "order_create" %}"
                            class="btn btn-fullwidth btn-bg-sand">{% trans "CheckOut" %} </a>
-                    {% endif %}
                 </div>
             </div>
         </div>

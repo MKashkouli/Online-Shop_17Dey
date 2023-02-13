@@ -9,6 +9,7 @@ from django.utils.translation import gettext as _
 
 class ProductListView(generic.ListView):
     queryset = Product.objects.filter(active=True)  # or model = Product
+    # paginate_by = 6
     template_name = "products/product_list.html"
     context_object_name = "products"
 
