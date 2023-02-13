@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'cart',
     'persian_translate',
     'orders',
+    "payment",
 
 ]
 MIDDLEWARE = [
@@ -206,3 +207,5 @@ from django.contrib.messages import constants as message_constants
 MESSAGE_TAGS = {
     message_constants.ERROR: 'danger',
 }
+
+ZARINPAL_MERCHANT_ID= env("DJANGO_ZARINPAL_MERCHANT_ID")
