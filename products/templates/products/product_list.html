@@ -96,15 +96,22 @@
                         <nav class="pagination-wrap mt--35 mt-md--25 pb-5">
 
                             <ul class="pagination">
-                                <li><a href="#" class="next page-number"><i class="fa fa-angle-double-right"></i></a>
+                                <li><a href="?page=1" class="next page-number"><i class="fa fa-angle-double-right"></i></a>
                                 </li>
-                                <li><span class="current page-number">1</span></li>
-                                <li><a href="#" class="page-number">2</a></li>
-                                <li><a href="#" class="page-number">3</a></li>
-                                <li><a href="#" class="prev page-number"><i class="fa fa-angle-double-left"></i></a>
+                                {% if page_obj.has_previous %}
+                                <li><span href="?page={{ page_obj.number|add:"-1" }}" class="current page-number">{{ page_obj.number|add:"-1" }}</span></li>
+                                {% endif %}
+                                <li><a href="#" class="page-number">{{ page_obj.number }}</a></li>
+                                {% if page_obj.has_next %}
+                                <li><a href="?page={{ page_obj.number|add:"1" }}" class="page-number">{{ page_obj.number|add:"1" }}</a></li>
+                                {% endif %}
+                                <li><a href="?page={{ page_obj.paginator.num_pages }}" class="prev page-number"><i class="fa fa-angle-double-left"></i></a>
                                 </li>
                             </ul>
                         </nav>
+
+
+
                     </div>
                 </div>
             </div>

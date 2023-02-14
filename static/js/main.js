@@ -295,7 +295,6 @@
 	// Accordion Slider On Click
 
 	accordionOnClick('.accordion-click')
-
 	// Accordion Slider Functions
 	function accordionOnHover($selector){
 	    $($selector).on('mouseover', function(){
