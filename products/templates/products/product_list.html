@@ -9,113 +9,121 @@
 {% block content %}
 
     <!-- Main Content Wrapper Start -->
-    <div class="main-content-wrapper container-fluid">
-        <div class="shop-page-wrapper shop-fullwidth">
-            <div class="container">
-                <div class="row mb--50">
-                    <div class="col-12">
-                        <div class="shop-toolbar">
-                            <div class="container row align-items-center">
-                                <div class="col-lg-12 mb-md--50 mb-xs--10">
-                                    <div class="shop-toolbar__left d-flex align-items-sm-center align-items-start flex-sm-row flex-column">
-                                        <p class="product-pages"> صفحه {{ page_obj.number }} از {{ page_obj.paginator.num_pages }} </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container-fluid shop-products">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="tab-content" id="product-tab-content">
-                            <div class="tab-pane fade show active" id="nav-all">
-                                <div class="row xxl-block-grid-6 grid-space-20">
-                                    {% for product in products %}
-                                        <div class="col-xl-3 col-md-4 col-sm-6 mb--50">
-                                            <div class="ShoppingYar-product">
-                                                <div class="product-inner">
-                                                    <figure class="product-image ">
-                                                        <a href="{{ product.get_absolute_url }}">
-                                                            {% if product.image %}
-                                                                <img style="height: 300px; width: 250px"
-                                                                     src="{{ product.image.url }}" alt="Products">
-                                                            {% else %}
-                                                                <img style="height: 300px; width: 250px"
-                                                                     src="{% static "img/products/prod-1.jpg" %}"
-                                                                     alt="Products">
-                                                            {% endif %}
+    <div class="container">
+
+
+        {#        <div class="row mb--10">#}
+        {#            <div class="col-12">#}
+        {#                <div class="shop-toolbar">#}
+        {#                    <div class="container row align-items-center">#}
+        {#                        <div class="col-lg-12 mb-md--50 mb-xs--10">#}
+        {#                            <div class="shop-toolbar__left d-flex align-items-sm-center align-items-start flex-sm-row flex-column">#}
+        {#                            </div>#}
+        {#                        </div>#}
+        {#                    </div>#}
+        {#                </div>#}
+        {#            </div>#}
+        {#        </div>#}
+    </div>
+    <div class="container-fluid shop-products">
+        <div class="d-flex justify-content-between align-items-center flex-sm-row flex-column ">
+            <img style="height: 200px;width: 100%" src="{% static "img/banner/b1-1024x350.jpg" %}" alt="">
+        </div>
+                    <p class="product-pages mt--10"> صفحه {{ page_obj.number }}
+            از {{ page_obj.paginator.num_pages }} </p>
+
+        <div class="row">
+
+            <div class="col-12">
+                <div class="tab-content" id="product-tab-content">
+                    <div class="tab-pane fade show active" id="nav-all">
+                        <div class="row xxl-block-grid-6 grid-space-20">
+                            {% for product in products %}
+                                <div class="col-xl-3 col-md-4 col-sm-6 mb--50">
+                                    <div class="ShoppingYar-product">
+                                        <div class="product-inner">
+                                            <figure class="product-image ">
+                                                <a href="{{ product.get_absolute_url }}">
+                                                    {% if product.image %}
+                                                        <img style="height: 300px; width: 250px"
+                                                             src="{{ product.image.url }}" alt="Products">
+                                                    {% else %}
+                                                        <img style="height: 300px; width: 250px"
+                                                             src="{% static "img/products/prod-1.jpg" %}"
+                                                             alt="Products">
+                                                    {% endif %}
+                                                </a>
+                                                <div class="ShoppingYar-product-action">
+                                                    <div class="product-action d-flex">
+                                                        <a href="wishlist.html" class="action-btn">
+                                                            <i class="flaticon flaticon-like"></i>
                                                         </a>
-                                                        <div class="ShoppingYar-product-action">
-                                                            <div class="product-action d-flex">
-                                                                <a href="wishlist.html" class="action-btn">
-                                                                    <i class="flaticon flaticon-like"></i>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <span class="product-badge">تخفیف ویژه</span>
-                                                    </figure>
-                                                    <div class="product-info">
-                                                        <h3 style="font-weight: bold" class="product-title h6 mb--15">
-                                                            <a href="{{ product.get_absolute_url }}">{{ product.title }} </a>
-                                                        </h3>
-                                                        <div style="font-weight: bold"
-                                                             class="product-price-wrapper mb--30">
-                                                            <span class="money text-success">{{ product.price|intcomma:False|translate_number }} تومان</span>
-                                                            <span class="money-separator">-</span>
-                                                            <span class="old-price text-danger">
+                                                    </div>
+                                                </div>
+                                                <span class="product-badge">تخفیف ویژه</span>
+                                            </figure>
+                                            <div class="product-info">
+                                                <h3 style="font-weight: bold" class="product-title h6 mb--15">
+                                                    <a href="{{ product.get_absolute_url }}">{{ product.title }} </a>
+                                                </h3>
+                                                <div style="font-weight: bold"
+                                                     class="product-price-wrapper mb--30">
+                                                    <span class="money text-success">{{ product.price|intcomma:False|translate_number }} تومان</span>
+                                                    <span class="money-separator">-</span>
+                                                    <span class="old-price text-danger">
                                                                 <span class="money text-danger">{{ product.price|add:1000|intcomma:False|translate_number }} تومان</span>
                                                             </span>
-                                                        </div>
-
-                                                        <form action="{% url "cart:cart_add" product.id %}"
-                                                              method="POST">
-                                                            {% csrf_token %}
-                                                            <div class="quantity-wrapper ">
-
-                                                                    <input type="hidden" class="quantity-input"
-                                                                           name="quantity" id="qty"
-                                                                           value="1" min="1" max="30">
-                                                                <button type="submit"
-                                                                        class="btn btn-small btn-bg-red btn-color-white btn-hover-2">
-                                                                    {% trans "Add To Cart" %}
-                                                                </button>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-
-
                                                 </div>
+
+                                                <form action="{% url "cart:cart_add" product.id %}"
+                                                      method="POST">
+                                                    {% csrf_token %}
+                                                    <div class="quantity-wrapper ">
+
+                                                        <input type="hidden" class="quantity-input"
+                                                               name="quantity" id="qty"
+                                                               value="1" min="1" max="30">
+                                                        <button type="submit"
+                                                                class="btn btn-small btn-bg-red btn-color-white btn-hover-2">
+                                                            {% trans "Add To Cart" %}
+                                                        </button>
+                                                    </div>
+                                                </form>
                                             </div>
+
+
                                         </div>
-                                    {% endfor %}
+                                    </div>
                                 </div>
-                            </div>
+                            {% endfor %}
                         </div>
-                        <nav class="pagination-wrap mt--35 mt-md--25 pb-5">
-
-                            <ul class="pagination">
-                                <li><a href="?page=1" class="next page-number"><i class="fa fa-angle-double-right"></i></a>
-                                </li>
-                                {% if page_obj.has_previous %}
-                                <li><span href="?page={{ page_obj.number|add:"-1" }}" class=" page-number">{{ page_obj.number|add:"-1" }}</span></li>
-                                {% endif %}
-                                <li><a href="#" class="current page-number">{{ page_obj.number }}</a></li>
-                                {% if page_obj.has_next %}
-                                <li><a href="?page={{ page_obj.number|add:"1" }}" class="page-number">{{ page_obj.number|add:"1" }}</a></li>
-                                {% endif %}
-                                <li><a href="?page={{ page_obj.paginator.num_pages }}" class="prev page-number"><i class="fa fa-angle-double-left"></i></a>
-                                </li>
-                            </ul>
-                        </nav>
-
-
-
                     </div>
                 </div>
+                <nav class="pagination-wrap mt--35 mt-md--25 pb-5">
+
+                    <ul class="pagination">
+                        <li><a href="?page=1" class="next page-number"><i class="fa fa-angle-double-right"></i></a>
+                        </li>
+                        {% if page_obj.has_previous %}
+                            <li><span href="?page={{ page_obj.number|add:"-1" }}"
+                                      class=" page-number">{{ page_obj.number|add:"-1" }}</span></li>
+                        {% endif %}
+                        <li><a href="#" class="current page-number">{{ page_obj.number }}</a></li>
+                        {% if page_obj.has_next %}
+                            <li><a href="?page={{ page_obj.number|add:"1" }}"
+                                   class="page-number">{{ page_obj.number|add:"1" }}</a></li>
+                        {% endif %}
+                        <li><a href="?page={{ page_obj.paginator.num_pages }}" class="prev page-number"><i
+                                class="fa fa-angle-double-left"></i></a>
+                        </li>
+                    </ul>
+                </nav>
+
+
             </div>
         </div>
+    </div>
+    </div>
     </div>
     <!-- Main Content Wrapper Start -->
 {% endblock content %}
