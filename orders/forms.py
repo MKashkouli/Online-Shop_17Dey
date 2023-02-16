@@ -6,7 +6,7 @@ from django.utils.translation import gettext_lazy as _
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = [_('first_name'), _('last_name'), _('phone_number'), _('address'), _('order_notes')]
+        fields = ['first_name', 'last_name', 'phone_number', 'address', 'order_notes']
         widgets = {
             "address": forms.Textarea(attrs={'rows': 3}),
             "order_notes": forms.Textarea(attrs={
