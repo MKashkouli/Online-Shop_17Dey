@@ -3,6 +3,7 @@ import json
 from django.shortcuts import render, get_object_or_404, redirect
 import requests
 from django.conf import settings
+from django.http import HttpResponse
 
 from orders.models import Order
 
@@ -27,7 +28,17 @@ def payment_process(request):
         'merchant_id': settings.ZARINPAL_MERCHANT_ID,
         'amount': rial_total_price,
         'description': f'#{order.id} : {order.user.first_name} {order.user.last_name}',
-        'callback_url': '127.0.0.1:8000',
+        'callback_url': 'http://127.0.0.1:8000',
     }
 
     res = requests.post(url=zarinpal_request_url, data=json.dumps(request_data), headers=request_header)
+    print(res.json())
+    data = res.json()['data']
+    authority = data['authority']
+    order.zarinpal_authority = authority
+    order.save()
+
+    if 'errors' not in data or len(data['errors']) == 0:
+        return redirect('https://www.zarinpal.com/pg/StartPay/{authority}'.format(authority=authority))
+    else:
+        return HttpResponse('ERROR FROM ZARINPAL')

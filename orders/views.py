@@ -40,6 +40,6 @@ def order_page_view(request):
             request.user.save()
 
             request.session['order_id'] = order_obj.id
-            return redirect(request, "payment:payment_process")
+            return redirect('payment:payment_process')
 
     return render(request, "orders/order_create.html", context={"form": order_form, })

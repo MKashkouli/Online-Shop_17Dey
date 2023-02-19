@@ -12,6 +12,7 @@ class Order(models.Model):
     phone_number = models.CharField(max_length=15, verbose_name=_("Phone Number"))
     address = models.CharField(max_length=700, verbose_name=_("Address"))
     order_notes = models.CharField(max_length=700,blank=True, verbose_name=_("Order Note"))
+    zarinpal_authority = models.CharField(max_length=255, blank=True)
 
     datetime_created = models.DateTimeField(auto_now_add=True)
     datetime_modified = models.DateTimeField(auto_now=True)
