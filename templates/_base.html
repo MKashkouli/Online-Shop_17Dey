@@ -31,7 +31,7 @@
 
 </head>
 
-<body dir='rtl' >
+<body dir='rtl'>
 <!-- Preloader Start -->
 <div class="ShoppingYar-preloader active">
     <div class="ShoppingYar-preloader-inner h-100 d-flex align-items-center justify-content-center">
@@ -98,6 +98,11 @@
                                     <sup class="mini-cart-count">{{ cart|length|translate_number }}</sup>
                                 </a>
                             </li>
+                            <li class="header-toolbar__item">
+                                <a href="#searchForm" class="header-toolbar__btn toolbar-btn">
+                                    <i class="flaticon flaticon-search"></i>
+                                </a>
+                            </li>
                             <li class="header-toolbar__item user-info">
                                 <a href="my-account.html" class="header-toolbar__btn">
                                     <i class="flaticon flaticon-user"></i>
@@ -128,6 +133,7 @@
                                     </div>
                                 </div>
                         </ul>
+
                     </div>
                 </div>
             </div>
@@ -194,7 +200,6 @@
     <!-- Search form Popup End -->
 
 
-
     <!-- Global Overlay Start -->
     <div class="ShoppingYar-global-overlay"></div>
     <!-- Global Overlay End -->
@@ -202,7 +207,7 @@
 </div>
 <!-- Main Wrapper End -->
 
- <!-- Mini Cart  -->
+<!-- Mini Cart  -->
 {% include "cart/cart_slidebar.html" %}
 
 <!-- ************************* JS Files ************************* -->
