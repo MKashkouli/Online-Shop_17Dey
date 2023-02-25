@@ -35,28 +35,34 @@
 
                             </div>
                         </li>
-                        <hr >
+                        <hr>
                     {% endfor %}
                 </ul>
                 <hr style=" height: 1px; background-color: #1b1b1b">
-            <div class="container-full-lg">
-                <div class="mini-cart__total">
-                    <span>{% trans "Total Items" %}</span>
-                    <span class="ammount"> {{ cart|length|translate_number }} </span>
-                </div>
+                <div class="container-full-lg">
+                    <div class="mini-cart__total">
+                        <span>{% trans "Total Items" %}</span>
+                        <span class="ammount"> {{ cart|length|translate_number }} </span>
+                    </div>
 
-                <div class="mini-cart__total">
-                    <span>{% trans "Total Price" %}</span>
-                    <span class="ammount"> {{ cart.get_total_price|intcomma:False|translate_number }} {% trans "$" %}</span>
+                    <div class="mini-cart__total">
+                        <span>{% trans "Total Price" %}</span>
+                        <span class="ammount"> {{ cart.get_total_price|intcomma:False|translate_number }} {% trans "$" %}</span>
+                    </div>
                 </div>
-            </div>
                 <div class="mini-cart__buttons">
-                    <a href="{% url "cart:cart_detail" %}"
-                       class="btn btn-fullwidth btn-bg-sand">{% trans "View Cart" %}</a>
-                    <a href="{% url "cart:cart_clear" %}"
+                    {% if cart %}
+                        <a href="{% url "cart:cart_detail" %}"
+                           class="btn btn-fullwidth btn-bg-sand">{% trans "View Cart" %}</a>
+                        <a href="{% url "cart:cart_clear" %}"
                            class="btn btn-fullwidth btn-bg-sand">{% translate "Empty Cart" %}</a>
-                    <a href="{% url "order_create" %}"
+                        <a href="{% url "order_create" %}"
                            class="btn btn-fullwidth btn-bg-sand">{% trans "CheckOut" %} </a>
+                    {% else %}
+                        <h3> {% trans " CART IS EMPTY !" %}</h3>
+                        <a class="btn btn-fullwidth btn-bg-sand"
+                           href="{% url "products" %}"> {% trans "GO SHOPING" %}</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
