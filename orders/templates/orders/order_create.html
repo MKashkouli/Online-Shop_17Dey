@@ -9,137 +9,147 @@
 
 {% block title %} Order Create{% endblock title %}
 {% block content %}
-
     {% translate 'Order' as A %}
     {% include "top_header.html" with header_name=A %}
     <!-- Main Content Wrapper Start -->
+    <div class="breadcrumb-area bg-color ptb--20" data-bg-color="#f6f6f6" >
     <div class="main-content-wrapper pb-5">
         <div class="page-content-inner">
             <div class="container">
-                <div class="row pt--50 pt-md--40 pt-sm--20"></div>
                 <div class="row pb--80 pb-md--60 pb-sm--40">
                     <!-- Checkout Area Start -->
-                    <div class="col-lg-6">
-                        <div class="checkout-title mt--10">
-                            <h2>جزئیات سفارش</h2>
-                        </div>
+                    <div class="col-lg-12">
 
-                        <div class="checkout-form">
-                            <form action="" method="POST" class="form form--checkout">
-                                {% csrf_token %}
-                                {% if form.errors %}
-                                    <div class="alert alert-danger">
-                                        {{ form.errors }}
-                                    </div>
-                                {% endif %}
-                                <div class="form-row mb--20">
-
-                                    <div class="form__group col-md-6 mb-sm--30">
-                                        <label for="billing_fname" class="form__label form__label--2">نام <span
-                                                class="required">*</span></label>
-                                        <input type="text" name="{{ form.first_name.name }}" id="billing_fname"
-                                               class="form__input form__input--2">
-                                    </div>
-                                    <div class="form__group col-md-6">
-                                        <label for="billing_lname" class="form__label form__label--2">نام خانوادگی <span
-                                                class="required">*</span></label>
-                                        <input type="text" name="{{ form.last_name.name }}" id="billing_lname"
-                                               class="form__input form__input--2">
-                                    </div>
+                        <div class="col-xl-12 offset-xl-1 col-lg-12 mt-md--40">
+                            <div class="order-details">
+                                <div class="checkout-title mt--10">
+                                    <h2>جزئیات سفارش</h2>
                                 </div>
-                                <div class="form-row mb--20">
-                                    <div class="form__group col-12">
-                                        <label for="billing_company" class="form__label form__label--2">آدرس</label>
-                                        <input type="text" name="{{ form.address.name }}" id="billing_company"
-                                               class="form__input form__input--2">
-                                    </div>
-                                </div>
-                                <div class="form-row mb--20">
-                                    <div class="form__group col-12">
-                                        <label for="billing_phone" class="form__label form__label--2">شماره همراه <span
-                                                class="required">*</span></label>
-                                        <input type="text" name="{{ form.phone_number.name }}" id="billing_phone"
-                                               class="form__input form__input--2">
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form__group col-12">
-                                        <label for="orderNotes" class="form__label form__label--2">یادداشت شما</label>
-                                        <textarea class="form__input form__input--2 form__input--textarea"
-                                                  id="orderNotes" name="{{ form.order_notes.name }}"
-                                                  placeholder="اگر یادداشتی دارید در اینجا وارد کنید. در غیر این صورت این مکان را خالی بگذارید"></textarea>
-                                    </div>
-                                </div>
-                            <button type="submit" class="btn"> {% trans "submit" %}</button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-xl-5 offset-xl-1 col-lg-6 mt-md--40">
-                        <div class="order-details">
-                            <div class="checkout-title mt--10">
-                                <h2>سفارش شما</h2>
-                            </div>
-                            <div class="table-content table-responsive mb--30">
-                                <table class="table order-table order-table-2">
-                                    <thead>
-                                    <tr>
-                                        <th>{% trans "Product" %}</th>
-                                        {#                                        <th>{% trans "quantity" %}</th>#}
-                                        <th class="text-right">{% trans "price" %} </th>
-                                        <th class="text-right">{% trans "total price" %} </th>
-                                        {# <th class="text-right"> {% trans "Total price" %}</th>#}
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    {% for item in cart %}
-
+                                <div class="table-content table-responsive mb--30">
+                                    <table class="table order-table order-table-2">
+                                        <thead>
                                         <tr>
-                                            <td> {{ item.product_obj.title }}
-                                                <span>&#10005;</span>{{ item.quantity|translate_number }}
-                                            </td>
-
-                                            <td class="text-right">
-                                                {{ item.product_obj.price|translate_number|intcomma:False }} {% trans "$" %}
-                                            </td>
-                                            <td class="text-right">
-                                                {{ item.total_price|translate_number|intcomma:False }} {% trans "$" %}
-                                            </td>
-
-
+                                            <th>{% trans "Product" %}</th>
+                                            {#                                        <th>{% trans "quantity" %}</th>#}
+                                            <th class="text-right">{% trans "price" %} </th>
+                                            <th class="text-right">{% trans "total price" %} </th>
+                                            {# <th class="text-right"> {% trans "Total price" %}</th>#}
                                         </tr>
-                                        {# <td class="text-right">{{ item.product_obj.price|translate_number|intcomma:False }}{% trans "$" %} </td>#}
-                                    {% endfor %}
+                                        </thead>
+                                        <tbody>
+                                        {% for item in cart %}
 
-                                    </tbody>
-                                    <tfoot>
-                                    <tr class="cart-subtotal">
-                                        <th><strong>{% trans "total" %}</strong></th>
-                                        <td class="text-right">
-                                        </td>
-                                        <td class="text-right">
-                                            <strong> {{ cart.get_total_price|intcomma:False|translate_number }} {% trans "$" %}</strong>
-                                        </td>
-                                    </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
-                            <div class="checkout-payment">
-                                <h2 class="py-5">روش پرداخت</h2>
-                                <form action="#" class="payment-form">
-                                    <div class="payment-group mb--10">
-                                        <div class="payment-radio">
-                                            <input type="radio" value="bank" name="payment-method" id="bank" checked>
-                                            <label class="payment-label" for="cheque">درگاه آنلاین زرین پال</label>
+                                            <tr>
+                                                <td> {{ item.product_obj.title }}
+                                                    <span>&#10005;</span>{{ item.quantity|translate_number }}
+                                                </td>
+
+                                                <td class="text-right">
+                                                    {{ item.product_obj.price|translate_number|intcomma:False }} {% trans "$" %}
+                                                </td>
+                                                <td class="text-right">
+                                                    {{ item.total_price|translate_number|intcomma:False }} {% trans "$" %}
+                                                </td>
+
+
+                                            </tr>
+                                            {# <td class="text-right">{{ item.product_obj.price|translate_number|intcomma:False }}{% trans "$" %} </td>#}
+                                        {% endfor %}
+
+                                        </tbody>
+                                        <tfoot>
+                                        <tr class="cart-subtotal">
+                                            <th><strong>{% trans "total" %}</strong></th>
+                                            <td class="text-right">
+                                            </td>
+                                            <td class="text-right">
+                                                <strong> {{ cart.get_total_price|intcomma:False|translate_number }} {% trans "$" %}</strong>
+                                            </td>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+
+                                <div class="checkout-form">
+                                    <form action="" method="POST" class="form form--checkout">
+                                        {% csrf_token %}
+                                        {% if form.errors %}
+                                            <div class="alert alert-danger">
+                                                {{ form.errors }}
+                                            </div>
+                                        {% endif %}
+                                        <div class="form-row mb--20">
+
+                                            <div class="form__group col-12 mb-sm--30">
+                                                <div class="checkout-title mt--10">
+                                                        <h2>جزئیات ارسال سفارش  </h2>
+                                                </div>
+                                                <label for="billing_fname" class="form__label form__label--2">نام <span
+                                                        class="required">*</span></label>
+                                                <input type="text" name="{{ form.first_name.name }}" id="billing_fname"
+                                                       class="form__input form__input--2">
+                                            </div>
+                                            <div class="form__group col-12">
+                                                <label for="billing_lname" class="form__label form__label--2">نام
+                                                    خانوادگی <span
+                                                            class="required">*</span></label>
+                                                <input type="text" name="{{ form.last_name.name }}" id="billing_lname"
+                                                       class="form__input form__input--2">
+                                            </div>
                                         </div>
-                                    </div>
-                                </form>
+                                        <div class="form-row mb--20">
+                                            <div class="form__group col-12">
+                                                <label for="billing_company"
+                                                       class="form__label form__label--2">آدرس</label>
+                                                <input type="text" name="{{ form.address.name }}" id="billing_company"
+                                                       class="form__input form__input--2">
+                                            </div>
+                                        </div>
+                                        <div class="form-row mb--20">
+                                            <div class="form__group col-12">
+                                                <label for="billing_phone" class="form__label form__label--2">شماره
+                                                    همراه <span
+                                                            class="required">*</span></label>
+                                                <input type="text" name="{{ form.phone_number.name }}"
+                                                       id="billing_phone"
+                                                       class="form__input form__input--2">
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form__group col-12">
+                                                <label for="orderNotes" class="form__label form__label--2">یادداشت
+                                                    شما</label>
+                                                <textarea class="form__input form__input--2 form__input--textarea"
+                                                          id="orderNotes" name="{{ form.order_notes.name }}"
+                                                          placeholder="اگر یادداشتی دارید در اینجا وارد کنید. در غیر این صورت این مکان را خالی بگذارید"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="checkout-title mt--10">
+                                            <h2 class="py-5">نحوه پرداخت</h2>
+{#                                            <form action="#" class="payment-form">#}
+                                                <div class="payment-group mb--10">
+                                                    <div class="payment-radio">
+                                                        <input type="radio" value="bank" name="payment-method" id="bank"
+                                                               checked>
+                                                        <label class="payment-label" for="cheque">درگاه آنلاین زرین
+                                                            پال</label>
+                                                    </div>
+                                                </div>
+{#                                            </form>#}
+                                        </div>
+                                    <button type="submit" class="btn btn-success mt-3 w-100"> {% trans "submit" %}</button>
+                                        </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <!-- Checkout Area End -->
+
                 </div>
+
             </div>
         </div>
+    </div>
     </div>
     <!-- Main Content Wrapper Start -->
 
