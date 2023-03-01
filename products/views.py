@@ -5,6 +5,7 @@ from .models import Product, Comment
 from cart.forms import AddToCartForm
 from django.contrib import messages
 from django.utils.translation import gettext as _
+from django.db.models import F
 
 
 class ProductListView(generic.ListView):
@@ -12,6 +13,23 @@ class ProductListView(generic.ListView):
     paginate_by = 8
     template_name = "products/product_list.html"
     context_object_name = "products"
+
+    def get_queryset(self):
+        sort_by = self.request.GET.get('sort_by')
+        order_by = self.request.GET.get('order_by', 'asc')
+
+        queryset = super().get_queryset()
+
+        if sort_by == 'price':
+            queryset = queryset.order_by(
+                F('price').asc(nulls_last=True) if order_by == 'asc'
+                else F('price').desc(nulls_last=True))
+        elif sort_by == 'recently_added':
+            queryset = queryset.order_by(
+                F('datetime_created').asc(nulls_last=True) if order_by == 'asc'
+                else F('datetime_created').desc(nulls_last=True))
+
+        return queryset
 
 
 class ProductDetailView(generic.DetailView):

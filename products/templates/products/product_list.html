@@ -34,6 +34,21 @@
 
         <div class="row">
 
+        <form method="get">
+    <label for="sort_by">مرتب سازی بر اساس :</label>
+    <select name="sort_by" id="sort_by" onchange="this.form.submit()">
+        <option value="">--پیش فرض--</option>
+        <option value="price" {% if request.GET.sort_by == "price" %}selected{% endif %}>قیمت</option>
+        <option value="recently_added" {% if request.GET.sort_by == "recently_added" %}selected{% endif %}>آخرین محصولات</option>
+    </select>
+    <label for="order_by">ترتیب :</label>
+    <select name="order_by" id="order_by" onchange="this.form.submit()">
+        <option value="asc" {% if request.GET.order_by == "asc" %}selected{% endif %}>افزایشی</option>
+        <option value="desc" {% if request.GET.order_by == "desc" %}selected{% endif %}>کاهشی</option>
+    </select>
+</form>
+
+
             <div class="col-12">
                 <div class="tab-content" id="product-tab-content">
                     <div class="tab-pane fade show active" id="nav-all">
@@ -99,21 +114,22 @@
                         </div>
                     </div>
                 </div>
+
                 <nav class="pagination-wrap mt--35 mt-md--25 pb-5">
 
                     <ul class="pagination">
-                        <li><a href="?page=1" class="next page-number"><i class="fa fa-angle-double-right"></i></a>
+                        <li><a href="?{% if request.GET.sort_by %}{{ request.GET.urlencode }}&{% endif %}page=1" class="next page-number"><i class="fa fa-angle-double-right"></i></a>
                         </li>
                         {% if page_obj.has_previous %}
-                            <li><span href="?page={{ page_obj.number|add:"-1" }}"
-                                      class=" page-number">{{ page_obj.number|add:"-1" }}</span></li>
+                            <li><a href="?{% if request.GET.sort_by %}{{ request.GET.urlencode }}&{% endif %}page={{ page_obj.number|add:"-1" }}"
+                                      class=" page-number">{{ page_obj.number|add:"-1" }}</a></li>
                         {% endif %}
                         <li><a href="#" class="current page-number">{{ page_obj.number }}</a></li>
                         {% if page_obj.has_next %}
-                            <li><a href="?page={{ page_obj.number|add:"1" }}"
+                            <li><a href="?{% if request.GET.sort_by %}{{ request.GET.urlencode }}&{% endif %}page={{ page_obj.number|add:"1" }}"
                                    class="page-number">{{ page_obj.number|add:"1" }}</a></li>
                         {% endif %}
-                        <li><a href="?page={{ page_obj.paginator.num_pages }}" class="prev page-number"><i
+                        <li><a href="?{% if request.GET.sort_by %}{{ request.GET.urlencode }}&{% endif %}page={{ page_obj.paginator.num_pages }}" class="prev page-number"><i
                                 class="fa fa-angle-double-left"></i></a>
                         </li>
                     </ul>
