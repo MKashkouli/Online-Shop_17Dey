@@ -30,37 +30,64 @@
             <img style="height: 200px;width: 100%" src="{% static "img/banner/b1-1024x350.jpg" %}" alt="">
         </div>
 
-        <form method="get">
-        <div class="row-cols-1">
-            <div class="col-4 row mt--10">
-                <div class="col">
-                    <label for="sort_by">مرتب سازی بر اساس:</label>
-                </div>
-                <div class="col">
-                    <select class="form-control " name="sort_by" id="sort_by" onchange="this.form.submit()">
-                        <option value="">--پیش فرض--</option>
+{#        <form method="get">#}
+{#        <div class="row-cols-1">#}
+{#            <div class="col-4 row mt--10">#}
+{#                <div class="col">#}
+{#                    <label for="sort_by">مرتب سازی بر اساس:</label>#}
+{#                </div>#}
+{#                <div class="col">#}
+{#                    <select class="form-control " name="sort_by" id="sort_by" onchange="this.form.submit()">#}
+{#                        <option value="">--پیش فرض--</option>#}
+{#                        <option value="price" {% if request.GET.sort_by == "price" %}selected{% endif %}>قیمت</option>#}
+{#                        <option value="recently_added"#}
+{#                                {% if request.GET.sort_by == "recently_added" %}selected{% endif %}>آخرین محصولات#}
+{#                        </option>#}
+{#                    </select>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="col-4 row mt--10">#}
+{#                <div class="col">#}
+{#                    <label for="order_by">ترتیب :</label>#}
+{#                </div>#}
+{#                <div class="col">#}
+{##}
+{#                    <select class="form-control" name="order_by" id="order_by" onchange="this.form.submit()">#}
+{#                        <option value="">--پیش فرض--</option>#}
+{#                        <option value="asc" {% if request.GET.order_by == "asc" %}selected{% endif %}>افزایشی</option>#}
+{#                        <option value="desc" {% if request.GET.order_by == "desc" %}selected{% endif %}>کاهشی</option>#}
+{#                    </select>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#        </form>#}
+
+                <form method="get">
+       <div class="form-row mt--15">
+    <div class="col-2">
+
+                    <select class="form-control " name="sort_by" id="sort_by" onchange="this.form.submit() " >
+                        <option value="">مرتب سازی بر اساس</option>
                         <option value="price" {% if request.GET.sort_by == "price" %}selected{% endif %}>قیمت</option>
                         <option value="recently_added"
                                 {% if request.GET.sort_by == "recently_added" %}selected{% endif %}>آخرین محصولات
                         </option>
                     </select>
-                </div>
+
             </div>
-            <div class="col-4 row mt--10">
-                <div class="col">
-                    <label for="order_by">ترتیب :</label>
-                </div>
+            <div class="form-row">
                 <div class="col">
 
                     <select class="form-control" name="order_by" id="order_by" onchange="this.form.submit()">
                         <option value="">--پیش فرض--</option>
-                        <option value="asc" {% if request.GET.order_by == "asc" %}selected{% endif %}>افزایشی</option>
-                        <option value="desc" {% if request.GET.order_by == "desc" %}selected{% endif %}>کاهشی</option>
+                        <option value="asc" {% if request.GET.order_by == "asc" %}selected{% endif %}>صعودی</option>
+                        <option value="desc" {% if request.GET.order_by == "desc" %}selected{% endif %}>نزولی</option>
                     </select>
                 </div>
             </div>
         </div>
         </form>
+
 
         <p class="product-pages mt--10"> صفحه {{ page_obj.number }}
             از {{ page_obj.paginator.num_pages }} </p>
@@ -134,30 +161,67 @@
                     </div>
                 </div>
 
-                <nav class="pagination-wrap mt--35 mt-md--25 pb-5">
+{#                <nav class="pagination-wrap mt--35 mt-md--25 pb-5">#}
+{##}
+{#                    <ul class="pagination">#}
+{#                        <li><a href="?{% if request.GET.sort_by %}{{ request.GET.urlencode }}&{% endif %}page=1"#}
+{#                               class="next page-number"><i class="fa fa-angle-double-right"></i></a>#}
+{#                        </li>#}
+{#                        {% if page_obj.has_previous %}#}
+{#                            <li><a href="?#}
+{#                                    {% if request.GET.sort_by %}{{ request.GET.urlencode }}&{% endif %}page={{ page_obj.number|add:"-1" }}"#}
+{#                                   class=" page-number">{{ page_obj.number|add:"-1" }}</a></li>#}
+{#                        {% endif %}#}
+{#                        <li><a href="#" class="current page-number">{{ page_obj.number }}</a></li>#}
+{#                        {% if page_obj.has_next %}#}
+{#                            <li><a href="?#}
+{#                                    {% if request.GET.sort_by %}{{ request.GET.urlencode }}&{% endif %}page={{ page_obj.number|add:"1" }}"#}
+{#                                   class="page-number">{{ page_obj.number|add:"1" }}</a></li>#}
+{#                        {% endif %}#}
+{#                        <li><a href="?#}
+{#                                {% if request.GET.sort_by %}{{ request.GET.urlencode }}&{% endif %}page={{ page_obj.paginator.num_pages }}"#}
+{#                               class="prev page-number"><i#}
+{#                                class="fa fa-angle-double-left"></i></a>#}
+{#                        </li>#}
+{#                    </ul>#}
+{#                </nav>#}
 
-                    <ul class="pagination">
-                        <li><a href="?{% if request.GET.sort_by %}{{ request.GET.urlencode }}&{% endif %}page=1"
-                               class="next page-number"><i class="fa fa-angle-double-right"></i></a>
-                        </li>
-                        {% if page_obj.has_previous %}
-                            <li><a href="?
-                                    {% if request.GET.sort_by %}{{ request.GET.urlencode }}&{% endif %}page={{ page_obj.number|add:"-1" }}"
-                                   class=" page-number">{{ page_obj.number|add:"-1" }}</a></li>
-                        {% endif %}
-                        <li><a href="#" class="current page-number">{{ page_obj.number }}</a></li>
-                        {% if page_obj.has_next %}
-                            <li><a href="?
-                                    {% if request.GET.sort_by %}{{ request.GET.urlencode }}&{% endif %}page={{ page_obj.number|add:"1" }}"
-                                   class="page-number">{{ page_obj.number|add:"1" }}</a></li>
-                        {% endif %}
-                        <li><a href="?
-                                {% if request.GET.sort_by %}{{ request.GET.urlencode }}&{% endif %}page={{ page_obj.paginator.num_pages }}"
-                               class="prev page-number"><i
-                                class="fa fa-angle-double-left"></i></a>
-                        </li>
-                    </ul>
-                </nav>
+            <nav class="pagination-wrap mt--35 mt-md--25 pb-5">
+    <ul class="pagination">
+        <li>
+            <a href="?{% if request.GET.sort_by %}sort_by={{ request.GET.sort_by }}&{% endif %}{% if request.GET.order_by %}order_by={{ request.GET.order_by }}&{% endif %}page=1"
+               class="next page-number">
+                <i class="fa fa-angle-double-right"></i>
+            </a>
+        </li>
+        {% if page_obj.has_previous %}
+            <li>
+                <a href="?{% if request.GET.sort_by %}sort_by={{ request.GET.sort_by }}&{% endif %}{% if request.GET.order_by %}order_by={{ request.GET.order_by }}&{% endif %}page={{ page_obj.previous_page_number }}"
+                   class="page-number">
+                    {{ page_obj.previous_page_number }}
+                </a>
+            </li>
+        {% endif %}
+        <li>
+            <a href="#" class="current page-number">{{ page_obj.number }}</a>
+        </li>
+        {% if page_obj.has_next %}
+            <li>
+                <a href="?{% if request.GET.sort_by %}sort_by={{ request.GET.sort_by }}&{% endif %}{% if request.GET.order_by %}order_by={{ request.GET.order_by }}&{% endif %}page={{ page_obj.next_page_number }}"
+                   class="page-number">
+                    {{ page_obj.next_page_number }}
+                </a>
+            </li>
+        {% endif %}
+        <li>
+            <a href="?{% if request.GET.sort_by %}sort_by={{ request.GET.sort_by }}&{% endif %}{% if request.GET.order_by %}order_by={{ request.GET.order_by }}&{% endif %}page={{ page_obj.paginator.num_pages }}"
+               class="prev page-number">
+                <i class="fa fa-angle-double-left"></i>
+            </a>
+        </li>
+    </ul>
+</nav>
+
 
 
             </div>
