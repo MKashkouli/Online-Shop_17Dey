@@ -48,6 +48,22 @@
                             {{ product.price|intcomma:False|translate_number }}</span>
                                 </span>
                         </td>
+                    <td>
+                         <form action="{% url "cart:cart_add" product.id %}"
+                                                      method="POST">
+                                                    {% csrf_token %}
+                                                        <div class="quantity-wrapper ">
+
+                                                            <input type="hidden" class="quantity-input"
+                                                                   name="quantity" id="qty"
+                                                                   value="1" min="1" max="30">
+                                                        <button type="submit"
+                                                                class="btn btn-small btn-bg-red btn-color-white btn-hover-2">
+                                                            {% trans "Add To Cart" %}
+                                                        </button>
+                                                    </div>
+                                                </form>
+                    </td>
                     </tr>
 {#                    <div class="col-xl-3 col-md-4 col-sm-6 mb--50">#}
 {#                        <div class="ShoppingYar-product">#}
