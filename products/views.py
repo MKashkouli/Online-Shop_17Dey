@@ -69,6 +69,15 @@ def add_to_wishlist(request, pk):
     return redirect('products')
 
 
+@login_required
+def remove_from_wishlist(request, pk):
+    product = get_object_or_404(Product, id=pk)
+    wishlist = Wishlist.objects.get(user=request.user)
+    wishlist.products.remove(product)
+    wishlist.save()
+    messages.error(request, _("The Product has been removed from your WishList"))
+    return redirect('view_wishlist')
+
 
 @login_required
 def view_wishlist(request):

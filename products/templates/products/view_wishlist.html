@@ -28,7 +28,7 @@
                 {% for product in products %}
                     <tr>
                      <td class="product-remove text-left"><a
-                                                            href="#">
+                                                            href="{% url "remove_from_wishlist" pk=product.id %}">
                                                         <i class="flaticon flaticon-cross"></i></a></td>
                         <td class="product-thumbnail text-left">
                                                         <a href="{{ product.get_absolute_url }}">
