@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Comment
+from .models import Product, Comment,Wishlist
 from jalali_date.admin import ModelAdminJalaliMixin
 
 
@@ -23,3 +23,8 @@ class ProductAdmin(ModelAdminJalaliMixin ,admin.ModelAdmin):
 @admin.register(Comment)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ("author", "product", "body", "recommend", "active", "datetime_created")
+
+
+@admin.register(Wishlist)
+class Wishlist(admin.ModelAdmin):
+    list_display = ("user",)

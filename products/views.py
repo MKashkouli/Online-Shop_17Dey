@@ -1,11 +1,12 @@
 from django.views import generic
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404,redirect, render
 from .forms import CommentForm
-from .models import Product, Comment
+from .models import Product, Comment, Wishlist
 from cart.forms import AddToCartForm
 from django.contrib import messages
 from django.utils.translation import gettext as _
 from django.db.models import F
+from django.contrib.auth.decorators import login_required
 
 
 class ProductListView(generic.ListView):
@@ -56,3 +57,19 @@ class CommentCreateView(generic.CreateView):
         obj.product = product
         messages.success(self.request, _("Your Comment added Successfully"))
         return super().form_valid(form)
+
+
+@login_required
+def add_to_wishlist(request, pk):
+    product = Product.objects.get(id=pk)
+    wishlist, created = Wishlist.objects.get_or_create(user=request.user)
+    wishlist.products.add(product)
+    wishlist.save()
+    return redirect('product_detail', pk=pk)
+
+
+@login_required
+def view_wishlist(request):
+    wishlist, created = Wishlist.objects.get_or_create(user=request.user)
+    products = wishlist.products.all()
+    return render(request,template_name='products/view_wishlist.html', context={'products': products})

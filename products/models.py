@@ -28,6 +28,14 @@ class Product(models.Model):
         return reverse("product_detail", args=[self.pk])
 
 
+class Wishlist(models.Model):
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    products = models.ManyToManyField('Product')
+
+    def __str__(self):
+        return self.user
+
+
 class ActiveCommentManager(models.Manager):
     def get_queryset(self):
         return super(ActiveCommentManager, self).get_queryset().filter(active=True)

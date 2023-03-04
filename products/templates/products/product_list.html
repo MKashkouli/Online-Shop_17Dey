@@ -116,6 +116,12 @@
                                                 </a>
                                                 <div class="ShoppingYar-product-action">
                                                     <div class="product-action d-flex">
+                                                        {% if user.is_authenticated %}
+  <form method="POST" action="{% url 'add_to_wishlist' pk=product.id %}">
+    {% csrf_token %}
+    <button type="submit">Add to Wishlist</button>
+  </form>
+{% endif %}
                                                         <a href="wishlist.html" class="action-btn">
                                                             <i class="flaticon flaticon-like"></i>
                                                         </a>
