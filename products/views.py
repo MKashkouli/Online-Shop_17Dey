@@ -65,7 +65,9 @@ def add_to_wishlist(request, pk):
     wishlist, created = Wishlist.objects.get_or_create(user=request.user)
     wishlist.products.add(product)
     wishlist.save()
-    return redirect('product_detail', pk=pk)
+    messages.success(request, _("The Product has been added to your WishList"))
+    return redirect('products')
+
 
 
 @login_required
