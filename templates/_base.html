@@ -1,6 +1,7 @@
 {% load static %}
 {% load i18n %}
 {% load persian_translate_tags %}
+{% load jalali_tags %}
 
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
@@ -87,6 +88,9 @@
                     </div>
                     <div class="col-xl-3 col-lg-4 col-sm-7 col-12 p-0">
                         <ul class="header-toolbar">
+                          <div style="font-size:small" class="text-sm-left mb--15">
+               {% jalali_now '%Y/%m/%d -  %H:%M'|translate_number %}
+                    </div>
                             <li class="header-toolbar__item ml--15">
                                 <a href="{% url 'view_wishlist' %}" class="header-toolbar__btn mini-cart-btn mx-4">
                                     <i class="flaticon flaticon-like"></i>

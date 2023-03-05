@@ -68,4 +68,16 @@
         </div>
     </div>
 </aside>
+
+<!-- JavaScript code to close mini cart when clicking outside -->
+
+<script>
+  document.addEventListener('click', function(e) {
+    var miniCart = document.querySelector('.mini-cart');
+    var clickInsideCart = miniCart.contains(e.target);
+    if (!clickInsideCart && miniCart.classList.contains('open')) {
+      miniCart.classList.remove('open');
+    }
+  });
+</script>
 <!-- Mini Cart End -->
