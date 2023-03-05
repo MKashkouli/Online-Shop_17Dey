@@ -120,7 +120,8 @@
                                                             <form method="POST"
                                                                   action="{% url 'add_to_wishlist' pk=product.id %}">
                                                                 {% csrf_token %}
-                                                                <button type="submit" class="border-0"> <a href="wishlist.html" class="action-btn">
+                                                                <button type="submit" class="border-0">
+                                                                    <a href="wishlist.html" class="action-btn">
                                                             <i class="flaticon flaticon-like"></i>
                                                         </a></button>
                                                             </form>

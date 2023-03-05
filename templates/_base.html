@@ -87,9 +87,10 @@
                     </div>
                     <div class="col-xl-3 col-lg-4 col-sm-7 col-12 p-0">
                         <ul class="header-toolbar">
-                            <li class="header-toolbar__item">
-                                <a href="{% url 'view_wishlist' %}" class="header-toolbar__btn mx-4">
+                            <li class="header-toolbar__item ml--15">
+                                <a href="{% url 'view_wishlist' %}" class="header-toolbar__btn mini-cart-btn mx-4">
                                     <i class="flaticon flaticon-like"></i>
+                                     <sup class="mini-cart-count">{{wishlist_count|translate_number}}</sup>
                                 </a>
                             </li>
                             <li class="header-toolbar__item mini-cart-item">
@@ -103,8 +104,8 @@
                                     <i class="flaticon flaticon-search"></i>
                                 </a>
                             </li>
-                            <li class="header-toolbar__item user-info">
-                                <a href="my-account.html" class="header-toolbar__btn">
+                            <li class="header-toolbar__item user-info ">
+                                <a href="#" class="header-toolbar__btn">
                                     <i class="flaticon flaticon-user"></i>
                                 </a>
                                 <ul class="user-info-menu">

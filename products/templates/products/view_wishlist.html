@@ -5,7 +5,8 @@
 {% load humanize %}
 
 
-{% block content %} <div class="main-content-wrapper">
+{% block content %}
+    <div class="main-content-wrapper">
         <div class="page-content-inner ptb--80">
             <div class="container">
                 <div class="row">
@@ -14,121 +15,121 @@
                         <div class="row no-gutters">
                             <div class="col-12">
                                 <div class="table-content table-responsive">
-        {% if products %}
-            <table class="table text-center">
-                <thead>
-                <tr>
-                     <th>&nbsp;</th>
-                    <th>عکس محصول</th>
-                    <th>نام محصول</th>
-                    <th>قیمت</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for product in products %}
-                    <tr>
-                     <td class="product-remove text-left"><a
+                                    {% if products %}
+                                        <table class="table text-center">
+                                            <thead>
+                                            <tr>
+                                                <th>&nbsp;</th>
+                                                <th>عکس محصول</th>
+                                                <th>نام محصول</th>
+                                                <th>قیمت</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for product in products %}
+                                                <tr>
+                                                    <td class="product-remove text-left"><a
                                                             href="{% url "remove_from_wishlist" pk=product.id %}">
                                                         <i class="flaticon flaticon-cross"></i></a></td>
-                        <td class="product-thumbnail text-left">
+                                                    <td class="product-thumbnail text-left">
                                                         <a href="{{ product.get_absolute_url }}">
-                                                        {% if product.image %}
-                                                            <img src="{{ product.image.url }}" alt="Products">
-                                                        {% endif %}
+                                                            {% if product.image %}
+                                                                <img src="{{ product.image.url }}" alt="Products">
+                                                            {% endif %}
                                                         </a>
                                                     </td>
-                        <td class="product-name ">
-                            <h3>
-                            <a href="{% url 'product_detail' product.id %}">{{ product.title }}</a>
-                                </h3>
-                    </td>
-                        <td class="product-price">
+                                                    <td class="product-name ">
+                                                        <h3>
+                                                            <a href="{% url 'product_detail' product.id %}">{{ product.title }}</a>
+                                                        </h3>
+                                                    </td>
+                                                    <td class="product-price">
                             <span class="product-price-wrapper">
                                 <span class="money">
-                            {{ product.price|intcomma:False|translate_number }}</span>
+                            {{ product.price|intcomma:False|translate_number }} {% trans "$" %}</span>
                                 </span>
-                        </td>
-                    <td>
-                         <form action="{% url "cart:cart_add" product.id %}"
-                                                      method="POST">
-                                                    {% csrf_token %}
-                                                        <div class="quantity-wrapper ">
+                                                    </td>
+                                                    <td>
+                                                        <form action="{% url "cart:cart_add" product.id %}"
+                                                              method="POST">
+                                                            {% csrf_token %}
+                                                            <div class="quantity-wrapper ">
 
-                                                            <input type="hidden" class="quantity-input"
-                                                                   name="quantity" id="qty"
-                                                                   value="1" min="1" max="30">
-                                                        <button type="submit"
-                                                                class="btn btn-small btn-bg-red btn-color-white btn-hover-2">
-                                                            {% trans "Add To Cart" %}
-                                                        </button>
-                                                    </div>
-                                                </form>
-                    </td>
-                    </tr>
-{#                    <div class="col-xl-3 col-md-4 col-sm-6 mb--50">#}
-{#                        <div class="ShoppingYar-product">#}
-{#                            <div class="product-inner">#}
-{#                                <figure class="product-image ">#}
-{#                                    <a href="{{ product.get_absolute_url }}">#}
-{#                                        {% if product.image %}#}
-{#                                            <img style="height: 300px; width: 250px"#}
-{#                                                 src="{{ product.image.url }}" alt="Products">#}
-{#                                        {% else %}#}
-{#                                            <img style="height: 300px; width: 250px"#}
-{#                                                 src="{% static "img/products/prod-1.jpg" %}"#}
-{#                                                 alt="Products">#}
-{#                                        {% endif %}#}
-{#                                    </a>#}
-{#                                    <div class="ShoppingYar-product-action">#}
-{#                                        <div class="product-action d-flex">#}
-{#                                            {% if user.is_authenticated %}#}
-{#                                                <form method="POST" action="{% url 'add_to_wishlist' pk=product.id %}">#}
-{#                                                    {% csrf_token %}#}
-{#                                                    <button type="submit">Add to Wishlist</button>#}
-{#                                                </form>#}
-{#                                            {% endif %}#}
-{#                                            <a href="wishlist.html" class="action-btn">#}
-{#                                                <i class="flaticon flaticon-like"></i>#}
-{#                                            </a>#}
-{#                                        </div>#}
-{#                                    </div>#}
-{#                                    <span class="product-badge">تخفیف ویژه</span>#}
-{#                                </figure>#}
-{#                                <div class="product-info">#}
-{#                                    <h3 style="font-weight: bold" class="product-title h6 mb--15">#}
-{#                                        <a href="{{ product.get_absolute_url }}">{{ product.title }} </a>#}
-{#                                    </h3>#}
-{#                                    <div style="font-weight: bold"#}
-{#                                         class="product-price-wrapper mb--30">#}
-{#                                        <span class="money text-success">{{ product.price|intcomma:False|translate_number }} تومان</span>#}
-{#                                        <span class="money-separator">-</span>#}
-{#                                        <span class="old-price text-danger">#}
-{#                                                                <span class="money text-danger">{{ product.price|add:1000|intcomma:False|translate_number }} تومان</span>#}
-{#                                                            </span>#}
-{#                                    </div>#}
-{##}
-{##}
-{#                                </div>#}
-{##}
-{##}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
+                                                                <input type="hidden" class="quantity-input"
+                                                                       name="quantity" id="qty"
+                                                                       value="1" min="1" max="30">
+                                                                <button type="submit"
+                                                                        class="btn btn-small btn-bg-red btn-color-white btn-hover-2">
+                                                                    {% trans "Add To Cart" %}
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                                {#                    <div class="col-xl-3 col-md-4 col-sm-6 mb--50">#}
+                                                {#                        <div class="ShoppingYar-product">#}
+                                                {#                            <div class="product-inner">#}
+                                                {#                                <figure class="product-image ">#}
+                                                {#                                    <a href="{{ product.get_absolute_url }}">#}
+                                                {#                                        {% if product.image %}#}
+                                                {#                                            <img style="height: 300px; width: 250px"#}
+                                                {#                                                 src="{{ product.image.url }}" alt="Products">#}
+                                                {#                                        {% else %}#}
+                                                {#                                            <img style="height: 300px; width: 250px"#}
+                                                {#                                                 src="{% static "img/products/prod-1.jpg" %}"#}
+                                                {#                                                 alt="Products">#}
+                                                {#                                        {% endif %}#}
+                                                {#                                    </a>#}
+                                                {#                                    <div class="ShoppingYar-product-action">#}
+                                                {#                                        <div class="product-action d-flex">#}
+                                                {#                                            {% if user.is_authenticated %}#}
+                                                {#                                                <form method="POST" action="{% url 'add_to_wishlist' pk=product.id %}">#}
+                                                {#                                                    {% csrf_token %}#}
+                                                {#                                                    <button type="submit">Add to Wishlist</button>#}
+                                                {#                                                </form>#}
+                                                {#                                            {% endif %}#}
+                                                {#                                            <a href="wishlist.html" class="action-btn">#}
+                                                {#                                                <i class="flaticon flaticon-like"></i>#}
+                                                {#                                            </a>#}
+                                                {#                                        </div>#}
+                                                {#                                    </div>#}
+                                                {#                                    <span class="product-badge">تخفیف ویژه</span>#}
+                                                {#                                </figure>#}
+                                                {#                                <div class="product-info">#}
+                                                {#                                    <h3 style="font-weight: bold" class="product-title h6 mb--15">#}
+                                                {#                                        <a href="{{ product.get_absolute_url }}">{{ product.title }} </a>#}
+                                                {#                                    </h3>#}
+                                                {#                                    <div style="font-weight: bold"#}
+                                                {#                                         class="product-price-wrapper mb--30">#}
+                                                {#                                        <span class="money text-success">{{ product.price|intcomma:False|translate_number }} تومان</span>#}
+                                                {#                                        <span class="money-separator">-</span>#}
+                                                {#                                        <span class="old-price text-danger">#}
+                                                {#                                                                <span class="money text-danger">{{ product.price|add:1000|intcomma:False|translate_number }} تومان</span>#}
+                                                {#                                                            </span>#}
+                                                {#                                    </div>#}
+                                                {##}
+                                                {##}
+                                                {#                                </div>#}
+                                                {##}
+                                                {##}
+                                                {#                            </div>#}
+                                                {#                        </div>#}
+                                                {#                    </div>#}
 
-                {% endfor %}
-                </tbody>
-            </table>
-        {% else %}
-            <p>Your wishlist is empty.</p>
-        {% endif %}
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    {% else %}
+                                        <p>Your wishlist is empty.</p>
+                                    {% endif %}
 
                                 </div>
                             </div>
                         </div>
                     </div>
-                                    </div>
-                    </div>
-                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
 {% endblock %}
