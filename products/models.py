@@ -33,7 +33,7 @@ class Wishlist(models.Model):
     products = models.ManyToManyField('Product')
 
     def __str__(self):
-        return self.user
+        return str(self.user)
 
 
 class ActiveCommentManager(models.Manager):
