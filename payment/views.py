@@ -169,7 +169,8 @@ def payment_callback_sandbox(request):
                 order.zarinpal_data = data
                 order.save()
 
-                return HttpResponse("تراکنش با موفقیت انجام شد")
+                # return HttpResponse(f"تراکنش با موفقیت انجام شد{order.unique_code}")
+                return render(request, 'payment_confirmation.html',{"order":order})
 
             elif payment_code == 101:
                 return HttpResponse("تراکنش تکراری")

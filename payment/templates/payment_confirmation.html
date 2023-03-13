@@ -1,0 +1,24 @@
+{% extends '_base.html' %}
+{% load i18n %}
+{% load persian_translate_tags %}
+{% load humanize %}
+
+{% block title %} تراکنش موفق{% endblock title %}
+
+{% block content %}
+    <div class="main-content-wrapper">
+        <div class="page-content-inner ptb--80">
+            <div class="container">
+                <h1>تراکنش با موفقیت انجام شد</h1>
+                <p>ردیف سفارش: {{ order.pk }}</p>
+                <p>نام مشتری:{{ order.first_name }}{{ order.last_name }}</p>
+                <p>جمع مبلغ پرداخت شده : {{ order.get_total_price|intcomma:False|translate_number }}تومان   </p>
+                <p>کد رهگیری: {{ order.unique_code }}</p>
+                <a class="btn btn-fullwidth btn-bg-sand" href="{% url "home" %}"> بازگشت به صفحه اصلی</a>
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock %}
