@@ -1,7 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.utils.translation import gettext_lazy as _
-
+import uuid
 
 class Order(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name=_("user"))
@@ -12,6 +12,7 @@ class Order(models.Model):
     phone_number = models.CharField(max_length=15, verbose_name=_("Phone Number"))
     address = models.CharField(max_length=700, verbose_name=_("Address"))
     order_notes = models.CharField(max_length=700,blank=True, verbose_name=_("Order Note"))
+    unique_code = models.CharField(max_length=36, default=uuid.uuid4, editable=False, blank=True)
 
     zarinpal_authority = models.CharField(max_length=255, blank=True)
     zarinpal_ref_id = models.CharField(max_length=255, blank=True)
