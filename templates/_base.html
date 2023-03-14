@@ -48,15 +48,23 @@
     <!-- Header Start -->
     <header class="header">
         <div class="header-inner fixed-header">
+
             <div class="container">
+                <div style="font-size:small;display: flex; justify-content: space-between;"
+                     class=" text-sm-left mb--15">
+                    <p style="font-size:small;float: right;text-align: right"> {{ user.first_name }} {{ user.last_name }}
+                        عزیز خوش آمدید </p>
+                    {% jalali_now '%Y/%m/%d -  %H:%M'|translate_number %}
+                </div>
+
                 <div class="row align-items-center">
                     <div class="col-xl-9 col-lg-8 col-5 col-xs-0 col-none col-sm-block p-0">
                         <nav class="main-navigation">
-                            <div class="site-branding" style="margin-right: 30px;">
+                            <div class="site-branding" >
                                 <a href="{% url "home" %}" class="logo">
                                     <figure class="logo--normal d-none d-sm-block">
                                         <img class="px-6" src="{% static "img/sss.png" %}"
-                                             style="max-height: 50px; margin-bottom: -15px;" alt="Logo">
+                                             style="max-height: 50px" alt="Logo">
                                     </figure>
                                 </a>
                             </div>
@@ -64,22 +72,22 @@
                                 <ul class="mainmenu d-lg-flex jusity-content-end jusity-content-lg-start pt-4">
                                     <li class="mainmenu__item menu-item-has-children">
                                         <a href="{% url "home" %}" class="mainmenu__link">
-                                            <span class="mm-text">{% trans "HOME" %} </span>
+                                            <span class="mm-text btn btn-small">{% trans "HOME" %} </span>
                                         </a>
                                     </li>
                                     <li class="mainmenu__item menu-item-has-children">
                                         <a href="{% url "products" %}" class="mainmenu__link">
-                                            <span class="mm-text">{% trans "PRODUCTS  " %} </span>
+                                            <span class="mm-text btn btn-small">{% trans "PRODUCTS  " %} </span>
                                         </a>
                                     </li>
                                     <li class="mainmenu__item menu-item-has-children">
                                         <a href="{% url "aboutus" %}" class="mainmenu__link">
-                                            <span class="mm-text"> {% trans "ABOUT US" %} </span>
+                                            <span class="mm-text btn btn-small"> {% trans "ABOUT US" %} </span>
                                         </a>
                                     </li>
                                     <li class="mainmenu__item">
                                         <a href="{% url "contactus" %}" class="mainmenu__link">
-                                            <span class="mm-text">  {% trans "CONTACT US" %} </span>
+                                            <span class="mm-text btn btn-small">  {% trans "CONTACT US" %} </span>
                                         </a>
                                     </li>
                                 </ul>
@@ -88,13 +96,10 @@
                     </div>
                     <div class="col-xl-3 col-lg-4 col-sm-7 col-12 p-0">
                         <ul class="header-toolbar">
-                          <div style="font-size:small" class="text-sm-left mb--15">
-               {% jalali_now '%Y/%m/%d -  %H:%M'|translate_number %}
-                    </div>
                             <li class="header-toolbar__item ml--15">
                                 <a href="{% url 'view_wishlist' %}" class="header-toolbar__btn mini-cart-btn mx-4">
                                     <i class="flaticon flaticon-like"></i>
-                                     <sup class="mini-cart-count">{{wishlist_count|translate_number}}</sup>
+                                    <sup class="mini-cart-count">{{ wishlist_count|translate_number }}</sup>
                                 </a>
                             </li>
                             <li class="header-toolbar__item mini-cart-item">
