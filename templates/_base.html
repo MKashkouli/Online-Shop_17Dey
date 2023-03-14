@@ -50,12 +50,35 @@
         <div class="header-inner fixed-header">
 
             <div class="container">
+
+            <div class="d-flex">
+            <div class="d-flex">
+
                 <div style="font-size:small;display: flex; justify-content: space-between;"
-                     class=" text-sm-left mb--15">
+                     class=" p-2 text-sm-left mb--15">
+                    {% if user.is_authenticated %}
                     <p style="font-size:small;float: right;text-align: right"> {{ user.first_name }} {{ user.last_name }}
                         عزیز خوش آمدید </p>
+                        {% else %}
+                        <p style="font-size:small;float: right;text-align: right"> کاربر مهمان
+                        عزیز خوش آمدید </p>
+                    {% endif %}
+                </div>
+            </div>
+            <div style="font-size:small" class=" mr-auto p-2">
                     {% jalali_now '%Y/%m/%d -  %H:%M'|translate_number %}
                 </div>
+</div>
+                         {% if messages %}
+        <div class="container">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
+        </div>
+    {% endif %}
 
                 <div class="row align-items-center">
                     <div class="col-xl-9 col-lg-8 col-5 col-xs-0 col-none col-sm-block p-0">
@@ -153,16 +176,7 @@
     <!-- Header End -->
 
 
-    {% if messages %}
-        <div class="container">
-            {% for message in messages %}
-                <div class="alert alert-{{ message.tags }}">
-                    {{ message }}
-                </div>
-            {% endfor %}
 
-        </div>
-    {% endif %}
 
     {% block content %}
     {% endblock %}
