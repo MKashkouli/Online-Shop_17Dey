@@ -41,33 +41,61 @@ you in the credits and contributors section
 
 ## Setup
 
-* 1 : create virtual environment
+* 1 : Clone the repository:
 
 ```shell
-virtualenv -p python3 venv 
+   git clone https://github.com/MKashkouli/Online-Shop_17Dey.git
 ```
 
-* 2 : activate virtual environment
+* 2 : Create a new virtual environment :
 
 ```shell
-source venv/bin/activate  
+  python -m venv venv
+
 ```
-* 3 : run docker
+* 3 : Activate the Venv :
+
+( On WINDOWS)
+```shell
+  venv\Scripts\activate
+
+```
+(On Linux or macOS)
+```shell
+  source venv/bin/activate
+
+```
+
+* 4 : Build the Docker image:
 
 ```shell
-source docker-compose up
+docker-compose build 
+```
 
-*  4 : install package | library from requirements.txt
+* 5 : Start the containers:
+
+```shell
+docker-compose up -d
+
+*  6 : Create the database tables:
+
+```shell
+ docker-compose exec web python manage.py migrate
+```
+
+* 7 : Create a superuser:
+
+```shell
+ docker-compose exec web python manage.py createsuperuser
+```
+
+* 8 :  install package | library from requirements.txt
 
 ```shell
  pip install -r requirements.txt
 ```
 
-* last step run django server
-
-```shell
- docker compose exec web python manage.py runserver
-```
+* 9 : Visit http://localhost:8000
 
 ## Contributors
 
