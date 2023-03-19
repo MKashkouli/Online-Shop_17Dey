@@ -76,6 +76,7 @@ docker-compose build
 
 ```shell
 docker-compose up -d
+```
 
 *  6 : Create the database tables:
 
